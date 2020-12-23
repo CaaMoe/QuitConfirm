@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "quitconfirm",
+  "version": "${version}",
+  "name": "QuitConfirm",
+  "description": "",
+  "authors": ["CaaMoe"],
+  "contact": {},
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {},
+  "mixins": [
+    "quitconfirm.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.10.8",
+    "minecraft": "1.16.4"
+  }
+}
