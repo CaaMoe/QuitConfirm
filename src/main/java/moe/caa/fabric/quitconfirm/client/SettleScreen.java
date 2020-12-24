@@ -8,7 +8,7 @@ import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
 
 @SuppressWarnings("all")
-public class SettleScreen extends Screen {
+public final class SettleScreen extends Screen {
     private final Screen parent;
     private ButtonWidget finalE;
     private ButtonWidget integratedE;

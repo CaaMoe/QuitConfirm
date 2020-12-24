@@ -26,7 +26,7 @@ public abstract class MixinGameMenuScreenLambda_buttonWidget2 extends Screen {
         super(title);
     }
 
-    @Inject(method = "method_19836(Lnet/minecraft/client/gui/widget/ButtonWidget;)V", at = @At(value = "HEAD"), cancellable = true)
+    @Inject(method = "net/minecraft/client/gui/screen/GameMenuScreen.method_19836(Lnet/minecraft/client/gui/widget/ButtonWidget;)V", at = @At(value = "HEAD"), cancellable = true)
     private void on(ButtonWidget button, CallbackInfo ci){
         boolean bl = this.client.isInSingleplayer();
         boolean bl2 = this.client.isConnectedToRealms();
