@@ -1,0 +1,13 @@
+{
+  "gui.quitconfirm.title": "退出",
+  "gui.quitconfirm.integrate.text": "保存并且退出到标题？",
+  "gui.quitconfirm.final.text": "退出游戏？",
+  "gui.quitconfirm.dedicated.text": "断开连接（第三方服务器）？",
+  "gui.quitconfirm.reams.text": "断开连接（领域服务器）？",
+  "gui.quitconfirm.settle.title": "设置",
+  "button.quitconfirm.opt.final": "最终退出时拦截： %s",
+  "button.quitconfirm.opt.integrate": "单人退出时拦截： %s",
+  "button.quitconfirm.opt.reams": "领域服务器退出时拦截： %s",
+  "button.quitconfirm.opt.dedicated": "第三方服务器退出时拦截： %s",
+  "button.quitconfirm.opt.shortcut": "响应快捷键： %s"
+}
