@@ -1,0 +1,13 @@
+{
+  "gui.quitconfirm.title": "Quit",
+  "gui.quitconfirm.integrate.text": "Do you want to save and quit to title ?",
+  "gui.quitconfirm.final.text": "Do you want to quit the game ?",
+  "gui.quitconfirm.dedicated.text": "Do you want to disconnect(3rd-party Server) ?",
+  "gui.quitconfirm.reams.text": "Do you want to disconnect(Minecraft Realm) ?",
+  "gui.quitconfirm.settle.title": "Settle (Sorry,This interface only supports simplified Chinese)",
+  "button.quitconfirm.opt.final": "最终退出时拦截： %s",
+  "button.quitconfirm.opt.integrate": "单人退出时拦截： %s",
+  "button.quitconfirm.opt.reams": "领域服务器退出时拦截： %s",
+  "button.quitconfirm.opt.dedicated": "第三方服务器退出时拦截： %s",
+  "button.quitconfirm.opt.shortcut": "响应快捷键： %s"
+}

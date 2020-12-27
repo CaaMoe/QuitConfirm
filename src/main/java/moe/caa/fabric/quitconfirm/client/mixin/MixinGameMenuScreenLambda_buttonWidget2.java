@@ -22,6 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Environment(EnvType.CLIENT)
 @Mixin(GameMenuScreen.class)
 public abstract class MixinGameMenuScreenLambda_buttonWidget2 extends Screen {
+
     protected MixinGameMenuScreenLambda_buttonWidget2(Text title) {
         super(title);
     }
