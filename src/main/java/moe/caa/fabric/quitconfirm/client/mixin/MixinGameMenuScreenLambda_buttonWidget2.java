@@ -1,7 +1,7 @@
 package moe.caa.fabric.quitconfirm.client.mixin;
 
 import moe.caa.fabric.quitconfirm.client.Config;
-import moe.caa.fabric.quitconfirm.client.ConfirmScreen;
+import moe.caa.fabric.quitconfirm.client.screen.ConfirmScreen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.GameMenuScreen;

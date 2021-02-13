@@ -1,5 +1,6 @@
-package moe.caa.fabric.quitconfirm.client;
+package moe.caa.fabric.quitconfirm.client.screen;
 
+import moe.caa.fabric.quitconfirm.client.Config;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ScreenTexts;
 import net.minecraft.client.gui.widget.ButtonWidget;

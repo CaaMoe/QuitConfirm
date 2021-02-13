@@ -1,5 +1,6 @@
-package moe.caa.fabric.quitconfirm.client;
+package moe.caa.fabric.quitconfirm.client.screen;
 
+import moe.caa.fabric.quitconfirm.client.Config;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
