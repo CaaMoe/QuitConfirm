@@ -1,7 +1,6 @@
 package moe.caa.fabric.quitconfirm.client.screen;
 
 import moe.caa.fabric.quitconfirm.client.Config;
-import moe.caa.fabric.quitconfirm.client.screen.ConfirmScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.SaveLevelScreen;
 import net.minecraft.client.gui.screen.TitleScreen;
