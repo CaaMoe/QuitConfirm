@@ -66,9 +66,4 @@ public final class SettleScreen extends Screen {
     public boolean shouldCloseOnEsc() {
         return true;
     }
-
-    @Override
-    public void onClose() {
-        client.openScreen(parent);
-    }
 }

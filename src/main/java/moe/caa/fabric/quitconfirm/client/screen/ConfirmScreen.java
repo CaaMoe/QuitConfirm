@@ -1,6 +1,7 @@
 package moe.caa.fabric.quitconfirm.client.screen;
 
 import moe.caa.fabric.quitconfirm.client.Config;
+import moe.caa.fabric.quitconfirm.client.QuitConfirm;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
@@ -16,7 +17,6 @@ import java.util.TimerTask;
 @Environment(EnvType.CLIENT)
 public final class ConfirmScreen extends Screen {
     public static boolean confirm = false;
-    private static final Timer timer = new Timer("QuitConfirm");
 
     protected final Screen parent;
     private final Text message;
@@ -37,7 +37,7 @@ public final class ConfirmScreen extends Screen {
         ButtonWidget confirm = new ButtonWidget(this.width / 2 - 155 + 160, this.height / 4 + 120 + 12, 150, 20,  confirmMessage, (buttonWidget) -> this.run.run());
         cancel.active = false;
         confirm.active = false;
-        ConfirmScreen.timer.schedule(new TimerTask() {
+        QuitConfirm.TIMER.schedule(new TimerTask() {
             @Override
             public void run() {
                 cancel.active = true;
@@ -58,11 +58,6 @@ public final class ConfirmScreen extends Screen {
 
     public boolean shouldCloseOnEsc() {
         return Config.CONFIG.shortcutKet;
-    }
-
-    @Override
-    public void onClose() {
-        client.openScreen(parent);
     }
 
     @Override

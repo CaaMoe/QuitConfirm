@@ -4,7 +4,8 @@
   "package": "moe.caa.fabric.quitconfirm.client.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "MixinGameMenuScreenLambda_buttonWidget2",
+    "MixinButtonWidget",
+    "MixinGameMenuScreen",
     "MixinMinecraftClient"
   ],
   "client": [
