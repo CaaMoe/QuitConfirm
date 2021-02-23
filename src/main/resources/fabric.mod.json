@@ -3,6 +3,7 @@
   "id": "quitconfirm",
   "version": "${version}",
   "name": "QuitConfirm",
+  "icon": "assets/quitconfirm/icon.png",
   "description": "",
   "authors": ["CaaMoe"],
   "contact": {},
