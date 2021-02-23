@@ -5,10 +5,13 @@ import moe.caa.fabric.quitconfirm.client.QuitConfirm;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.gui.screen.Screen;
+import net.minecraft.client.gui.screen.options.AccessibilityOptionsScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
+import net.minecraft.client.gui.widget.TexturedButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
+import net.minecraft.util.Identifier;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,7 +20,7 @@ import java.util.TimerTask;
 @Environment(EnvType.CLIENT)
 public final class ConfirmScreen extends Screen {
     public static boolean confirm = false;
-
+    private static final Identifier SETTLE_ICON_TEXTURE = new Identifier("quitconfirm:textures/gui/settle/settle.png");
     protected final Screen parent;
     private final Text message;
     private final Text confirmMessage;
@@ -43,9 +46,13 @@ public final class ConfirmScreen extends Screen {
                 cancel.active = true;
                 confirm.active = true;
             }
-        }, 1000L);
+        }, Config.CONFIG.keepInAction);
         this.addButton(cancel);
         this.addButton(confirm);
+
+        this.addButton(new TexturedButtonWidget(this.width - 22, this.height - 22, 20, 20, 0, 0, 20, SETTLE_ICON_TEXTURE, 32, 64, (buttonWidget) -> {
+            this.client.openScreen(new SettleScreen(this));
+        }, new TranslatableText("gui.quitconfirm.settle.title")));
     }
 
     @Override

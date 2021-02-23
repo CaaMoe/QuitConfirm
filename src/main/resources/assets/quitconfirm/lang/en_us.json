@@ -4,10 +4,13 @@
   "gui.quitconfirm.final.text": "Are you sure you want to quit the game ?",
   "gui.quitconfirm.dedicated.text": "Are you sure you want to disconnect(3rd-party Server)?",
   "gui.quitconfirm.reams.text": "Are you sure you want to disconnect(Minecraft Realm)?",
-  "gui.quitconfirm.settle.title": "Settle (Sorry,This interface only supports simplified Chinese)",
-  "button.quitconfirm.opt.final": "最终退出时拦截： %s",
-  "button.quitconfirm.opt.integrate": "单人退出时拦截： %s",
-  "button.quitconfirm.opt.reams": "领域服务器退出时拦截： %s",
-  "button.quitconfirm.opt.dedicated": "第三方服务器退出时拦截： %s",
-  "button.quitconfirm.opt.shortcut": "响应快捷键： %s"
+  "gui.quitconfirm.settle.title": "Settles",
+  "text.quitconfirm.settle.whenappear": "When will the confirmation screen appear",
+  "text.quitconfirm.settle.other": "Other settings",
+  "button.quitconfirm.opt.final": "When closing the game window",
+  "button.quitconfirm.opt.integrate": "When quitting single player games",
+  "button.quitconfirm.opt.reams": "When quitting realms games",
+  "button.quitconfirm.opt.dedicated": "When quitting the server",
+  "button.quitconfirm.opt.shortcut": "Use the shortcut keys in the confirmation screen",
+  "button.quitconfirm.opt.keepinactive": "Keep button inactive time"
 }

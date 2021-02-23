@@ -20,6 +20,7 @@ public final class Config {
     public boolean dedicatedE = true;
     public boolean reamsE = true;
     public boolean shortcutKet = false;
+    public long keepInAction = 1000;
 
     static {
         CONFIG.readNew();
@@ -51,9 +52,9 @@ public final class Config {
             dedicatedE = root.get("dedicatedE").getAsBoolean();
             reamsE = root.get("reamsE").getAsBoolean();
             shortcutKet = root.get("shortcutKet").getAsBoolean();
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Some data is corrupted！");
+            keepInAction = root.get("keepInAction").getAsLong();
+        } catch (Exception ignored) {
+
         }
     }
 
@@ -73,6 +74,7 @@ public final class Config {
         root.addProperty("dedicatedE", dedicatedE);
         root.addProperty("reamsE", reamsE);
         root.addProperty("shortcutKet", shortcutKet);
+        root.addProperty("keepInAction", keepInAction);
         QuitConfirm.GSON.toJson(root, jw);
         jw.flush();
         jw.close();

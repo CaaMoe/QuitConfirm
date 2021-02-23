@@ -3,7 +3,6 @@ package moe.caa.fabric.quitconfirm.client.mixin;
 import moe.caa.fabric.quitconfirm.client.screen.ToMainPressAction;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.GameMenuScreen;
-import net.minecraft.client.gui.widget.AbstractPressableButtonWidget;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
@@ -14,11 +13,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ButtonWidget.class)
-public abstract class MixinButtonWidget extends AbstractPressableButtonWidget {
-
-    public MixinButtonWidget(int i, int j, int k, int l, Text text) {
-        super(i, j, k, l, text);
-    }
+public abstract class MixinButtonWidget {
 
     @Accessor
     protected abstract void setOnPress(ButtonWidget.PressAction onPress);
