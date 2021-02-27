@@ -5,7 +5,7 @@
   "name": "QuitConfirm",
   "icon": "assets/quitconfirm/icon.png",
   "description": "",
-  "authors": ["CaaMoe"],
+  "authors": ["CaaMoe", "Xiao_Cozi"],
   "contact": {},
   "license": "MIT",
   "environment": "client",
@@ -14,14 +14,6 @@
   ],
   "depends": {
     "fabricloader": ">=0.7.0+build.171",
-    "minecraft": [
-      "1.16.2",
-      "1.16.3",
-      "1.16.4",
-      "1.16.5"
-    ]
-  },
-  "entrypoints": {
-    "modmenu": [ "moe.caa.fabric.quitconfirm.client.support.QuitConfirmModMenuApi" ]
+    "minecraft": "*"
   }
 }
