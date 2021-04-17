@@ -19,21 +19,26 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Environment(EnvType.CLIENT)
 @Mixin(MinecraftClient.class)
-public abstract class MixinMinecraftClient  {
+public abstract class MixinMinecraftClient {
 
-    @Shadow @Final private Window window;
+    @Shadow
+    @Nullable
+    public Screen currentScreen;
+    @Shadow
+    @Final
+    private Window window;
 
-    @Shadow @Nullable public Screen currentScreen;
+    @Shadow
+    public abstract void openScreen(@Nullable Screen screen);
 
-    @Shadow public abstract void openScreen(@Nullable Screen screen);
-
-    @Shadow public abstract void scheduleStop();
+    @Shadow
+    public abstract void scheduleStop();
 
     @Inject(method = "scheduleStop", at = @At("HEAD"), cancellable = true)
-    private void onScheduleStop(CallbackInfo ci){
-        if(Config.CONFIG.finalE && !ConfirmScreen.confirm){
-            if(!(currentScreen instanceof ConfirmScreen)){
-                openScreen(new ConfirmScreen(currentScreen, new TranslatableText("gui.quitconfirm.final.text"), new TranslatableText("menu.quit"), ()->{
+    private void onScheduleStop(CallbackInfo ci) {
+        if (Config.CONFIG.finalE && !ConfirmScreen.confirm) {
+            if (!(currentScreen instanceof ConfirmScreen)) {
+                openScreen(new ConfirmScreen(currentScreen, new TranslatableText("gui.quitconfirm.final.text"), new TranslatableText("menu.quit"), () -> {
                     ConfirmScreen.confirm = true;
                     scheduleStop();
                 }));
@@ -44,7 +49,7 @@ public abstract class MixinMinecraftClient  {
     }
 
     @Inject(method = "stop", at = @At("HEAD"))
-    private void onStop(CallbackInfo ci){
+    private void onStop(CallbackInfo ci) {
         Config.CONFIG.pushSave();
     }
 }

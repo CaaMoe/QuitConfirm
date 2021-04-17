@@ -5,7 +5,10 @@
   "name": "QuitConfirm",
   "icon": "assets/quitconfirm/icon.png",
   "description": "",
-  "authors": ["CaaMoe", "Xiao_Cozi"],
+  "authors": [
+    "CaaMoe",
+    "Xiao_Cozi"
+  ],
   "contact": {},
   "license": "MIT",
   "environment": "client",

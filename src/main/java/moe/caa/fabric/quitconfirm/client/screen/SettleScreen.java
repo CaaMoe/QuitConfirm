@@ -36,19 +36,19 @@ public final class SettleScreen extends Screen {
 
     @Override
     protected void init() {
-        finalE = new ButtonWidget(0, 0, 44, 20,  LiteralText.EMPTY, (buttonWidget) -> {
+        finalE = new ButtonWidget(0, 0, 44, 20, LiteralText.EMPTY, (buttonWidget) -> {
             Config.CONFIG.finalE = !Config.CONFIG.finalE;
         });
-        integratedE = new ButtonWidget(0, 0, 44, 20,   LiteralText.EMPTY, (buttonWidget) -> {
+        integratedE = new ButtonWidget(0, 0, 44, 20, LiteralText.EMPTY, (buttonWidget) -> {
             Config.CONFIG.integratedE = !Config.CONFIG.integratedE;
         });
-        reamsE = new ButtonWidget(0, 0,44, 20,   LiteralText.EMPTY, (buttonWidget) -> {
+        reamsE = new ButtonWidget(0, 0, 44, 20, LiteralText.EMPTY, (buttonWidget) -> {
             Config.CONFIG.reamsE = !Config.CONFIG.reamsE;
         });
-        dedicatedE = new ButtonWidget(0, 0,44, 20,  LiteralText.EMPTY, (buttonWidget) -> {
+        dedicatedE = new ButtonWidget(0, 0, 44, 20, LiteralText.EMPTY, (buttonWidget) -> {
             Config.CONFIG.dedicatedE = !Config.CONFIG.dedicatedE;
         });
-        shortcutKet = new ButtonWidget(0, 0, 44, 20,  LiteralText.EMPTY, (buttonWidget) -> {
+        shortcutKet = new ButtonWidget(0, 0, 44, 20, LiteralText.EMPTY, (buttonWidget) -> {
             Config.CONFIG.shortcutKet = !Config.CONFIG.shortcutKet;
         });
         keepInActive = new TextFieldWidget(SettleScreen.this.client.textRenderer, 0, 0, 42, 20, LiteralText.EMPTY);
@@ -61,15 +61,15 @@ public final class SettleScreen extends Screen {
         }));
 
         keepInActive.setChangedListener(s -> {
-            try{
+            try {
                 long value = Long.parseLong(s);
-                if(value >= 0){
+                if (value >= 0) {
                     keepInActive.setEditableColor(14737632);
                     Config.CONFIG.keepInAction = value;
                     back.active = true;
                     return;
                 }
-            } catch (Exception ignored){
+            } catch (Exception ignored) {
             }
             back.active = false;
             keepInActive.setEditableColor(16711680);
@@ -78,11 +78,11 @@ public final class SettleScreen extends Screen {
 
     @Override
     public void tick() {
-         finalE.setMessage(Config.CONFIG.finalE ? ScreenTexts.ON : ScreenTexts.OFF);
-         integratedE.setMessage(Config.CONFIG.integratedE ? ScreenTexts.ON : ScreenTexts.OFF);
-         reamsE.setMessage(Config.CONFIG.reamsE ? ScreenTexts.ON : ScreenTexts.OFF);
-         dedicatedE.setMessage(Config.CONFIG.dedicatedE ? ScreenTexts.ON : ScreenTexts.OFF);
-         shortcutKet.setMessage(Config.CONFIG.shortcutKet ? ScreenTexts.ON : ScreenTexts.OFF);
+        finalE.setMessage(Config.CONFIG.finalE ? ScreenTexts.ON : ScreenTexts.OFF);
+        integratedE.setMessage(Config.CONFIG.integratedE ? ScreenTexts.ON : ScreenTexts.OFF);
+        reamsE.setMessage(Config.CONFIG.reamsE ? ScreenTexts.ON : ScreenTexts.OFF);
+        dedicatedE.setMessage(Config.CONFIG.dedicatedE ? ScreenTexts.ON : ScreenTexts.OFF);
+        shortcutKet.setMessage(Config.CONFIG.shortcutKet ? ScreenTexts.ON : ScreenTexts.OFF);
     }
 
     @Override
@@ -104,7 +104,10 @@ public final class SettleScreen extends Screen {
         Config.CONFIG.pushSave();
     }
 
-    public class ListWidget extends  ElementListWidget<SettleScreen.Entry> {
+    public abstract static class Entry extends ElementListWidget.Entry<SettleScreen.Entry> {
+    }
+
+    public class ListWidget extends ElementListWidget<SettleScreen.Entry> {
 
         public ListWidget() {
             super(SettleScreen.this.client, SettleScreen.this.width, SettleScreen.this.height, 43, SettleScreen.this.height - 30, 24);
@@ -160,7 +163,7 @@ public final class SettleScreen extends Screen {
         }
     }
 
-    public class TextInputListEntry extends Entry{
+    public class TextInputListEntry extends Entry {
         private final TextFieldWidget fieldWidget;
         private final Text describeText;
         private final List<OrderedText> hoverText;
@@ -185,7 +188,7 @@ public final class SettleScreen extends Screen {
         }
     }
 
-    public class TextListEntry extends Entry{
+    public class TextListEntry extends Entry {
         private final Text text;
         private final int textWidth;
         private final int color;
@@ -214,8 +217,5 @@ public final class SettleScreen extends Screen {
             int startY = y + entryHeight - 10;
             renderer.draw(matrices, text, (float) startX, startY, color);
         }
-    }
-
-    public abstract static class Entry extends ElementListWidget.Entry<SettleScreen.Entry> {
     }
 }

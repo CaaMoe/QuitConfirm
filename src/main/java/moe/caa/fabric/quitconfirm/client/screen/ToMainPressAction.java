@@ -22,28 +22,28 @@ public class ToMainPressAction implements ButtonWidget.PressAction {
         boolean bl = this.CLIENT.isInSingleplayer();
         boolean bl2 = this.CLIENT.isConnectedToRealms();
         button.active = false;
-        if(bl){
-            if(Config.CONFIG.integratedE){
-                this.CLIENT.openScreen(new ConfirmScreen(this.CLIENT.currentScreen, new TranslatableText("gui.quitconfirm.integrate.text"), new TranslatableText("menu.returnToMenu"), ()-> confirm(0)));
+        if (bl) {
+            if (Config.CONFIG.integratedE) {
+                this.CLIENT.openScreen(new ConfirmScreen(this.CLIENT.currentScreen, new TranslatableText("gui.quitconfirm.integrate.text"), new TranslatableText("menu.returnToMenu"), () -> confirm(0)));
             } else {
                 confirm(0);
             }
-        } else if(bl2){
-            if(Config.CONFIG.reamsE){
-                this.CLIENT.openScreen(new ConfirmScreen(this.CLIENT.currentScreen, new TranslatableText("gui.quitconfirm.reams.text"), new TranslatableText("menu.disconnect"), ()-> confirm(1)));
+        } else if (bl2) {
+            if (Config.CONFIG.reamsE) {
+                this.CLIENT.openScreen(new ConfirmScreen(this.CLIENT.currentScreen, new TranslatableText("gui.quitconfirm.reams.text"), new TranslatableText("menu.disconnect"), () -> confirm(1)));
             } else {
                 confirm(1);
             }
         } else {
-            if(Config.CONFIG.dedicatedE){
-                this.CLIENT.openScreen(new ConfirmScreen(this.CLIENT.currentScreen, new TranslatableText("gui.quitconfirm.dedicated.text"), new TranslatableText("menu.disconnect"), ()-> confirm(2)));
+            if (Config.CONFIG.dedicatedE) {
+                this.CLIENT.openScreen(new ConfirmScreen(this.CLIENT.currentScreen, new TranslatableText("gui.quitconfirm.dedicated.text"), new TranslatableText("menu.disconnect"), () -> confirm(2)));
             } else {
                 confirm(2);
             }
         }
     }
 
-    private void confirm(int i){
+    private void confirm(int i) {
         this.CLIENT.world.disconnect();
         if (i == 0) {
             this.CLIENT.disconnect(new SaveLevelScreen(new TranslatableText("menu.savingLevel")));

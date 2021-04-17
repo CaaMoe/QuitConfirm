@@ -19,9 +19,9 @@ public abstract class MixinButtonWidget {
     protected abstract void setOnPress(ButtonWidget.PressAction onPress);
 
     @Inject(method = "<init>(IIIILnet/minecraft/text/Text;Lnet/minecraft/client/gui/widget/ButtonWidget$PressAction;Lnet/minecraft/client/gui/widget/ButtonWidget$TooltipSupplier;)V", at = @At("RETURN"))
-    private void onInit(int x, int y, int width, int height, Text message, ButtonWidget.PressAction onPress, ButtonWidget.TooltipSupplier tooltipSupplier, CallbackInfo ci){
-        if (MinecraftClient.getInstance().currentScreen instanceof GameMenuScreen){
-            if(message instanceof TranslatableText && ((TranslatableText) message).getKey().equals("menu.returnToMenu")){
+    private void onInit(int x, int y, int width, int height, Text message, ButtonWidget.PressAction onPress, ButtonWidget.TooltipSupplier tooltipSupplier, CallbackInfo ci) {
+        if (MinecraftClient.getInstance().currentScreen instanceof GameMenuScreen) {
+            if (message instanceof TranslatableText && ((TranslatableText) message).getKey().equals("menu.returnToMenu")) {
                 setOnPress(new ToMainPressAction(MinecraftClient.getInstance()));
             }
         }

@@ -12,15 +12,9 @@ import java.util.TimerTask;
 
 @Environment(EnvType.CLIENT)
 public final class Config {
+    public static final Config CONFIG = new Config();
     private static final File CONFIG_FOLDER = new File("config");
     private static final File CONFIG_FILE = new File(CONFIG_FOLDER, "quitconfirm.json");
-    public static final Config CONFIG = new Config();
-    public boolean finalE = true;
-    public boolean integratedE = false;
-    public boolean dedicatedE = true;
-    public boolean reamsE = true;
-    public boolean shortcutKet = false;
-    public long keepInAction = 1000;
 
     static {
         CONFIG.readNew();
@@ -29,10 +23,17 @@ public final class Config {
             public void run() {
                 CONFIG.pushSave();
             }
-        },0 , 1000 * 3600);
+        }, 0, 1000 * 3600);
     }
 
-    public void pushSave(){
+    public boolean finalE = true;
+    public boolean integratedE = false;
+    public boolean dedicatedE = true;
+    public boolean reamsE = true;
+    public boolean shortcutKet = false;
+    public long keepInAction = 1000;
+
+    public void pushSave() {
         try {
             CONFIG.save();
         } catch (Exception e) {
@@ -41,8 +42,8 @@ public final class Config {
         }
     }
 
-    private void readNew(){
-        if(!CONFIG_FILE.exists()){
+    private void readNew() {
+        if (!CONFIG_FILE.exists()) {
             return;
         }
         try {
@@ -59,10 +60,10 @@ public final class Config {
     }
 
     private synchronized void save() throws IOException {
-        if(!CONFIG_FOLDER.exists() && !CONFIG_FOLDER.mkdirs()){
+        if (!CONFIG_FOLDER.exists() && !CONFIG_FOLDER.mkdirs()) {
             throw new IOException("Unable to create data folder.");
         }
-        if(!CONFIG_FILE.exists() && !CONFIG_FILE.createNewFile()) {
+        if (!CONFIG_FILE.exists() && !CONFIG_FILE.createNewFile()) {
             throw new IOException("Unable to create data file.");
         }
 
