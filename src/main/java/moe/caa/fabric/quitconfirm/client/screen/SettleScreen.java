@@ -90,10 +90,12 @@ public final class SettleScreen extends Screen {
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
         this.renderBackground(matrices);
-        this.listWidget.render(matrices, mouseX, mouseY, delta);
+        super.render(matrices, mouseX, mouseY, delta);
+        //this.listWidget.render(matrices, mouseX, mouseY, delta);
+
         drawCenteredText(matrices, this.textRenderer, this.title, this.width / 2, 15, 16777215);
         drawStringWithShadow(matrices, this.textRenderer, "QuitConfirm v1.3", 2, this.height - 10, 5592405);
-        super.render(matrices, mouseX, mouseY, delta);
+        back.render(matrices, mouseX, mouseY, delta);
     }
 
     @Override
