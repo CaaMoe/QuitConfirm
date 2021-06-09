@@ -6,7 +6,7 @@ import net.minecraft.client.gui.screen.SaveLevelScreen;
 import net.minecraft.client.gui.screen.TitleScreen;
 import net.minecraft.client.gui.screen.multiplayer.MultiplayerScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.realms.gui.screen.RealmsBridgeScreen;
+import net.minecraft.client.realms.gui.screen.RealmsMainScreen;
 import net.minecraft.text.TranslatableText;
 
 public class ToMainPressAction implements ButtonWidget.PressAction {
@@ -50,11 +50,11 @@ public class ToMainPressAction implements ButtonWidget.PressAction {
             this.CLIENT.openScreen(new TitleScreen());
         } else {
             this.CLIENT.disconnect();
+            TitleScreen titleScreen = new TitleScreen();
             if (i == 1) {
-                RealmsBridgeScreen realmsBridgeScreen = new RealmsBridgeScreen();
-                realmsBridgeScreen.switchToRealms(new TitleScreen());
+                this.CLIENT.openScreen(new RealmsMainScreen(titleScreen));
             } else {
-                this.CLIENT.openScreen(new MultiplayerScreen(new TitleScreen()));
+                this.CLIENT.openScreen(new MultiplayerScreen(titleScreen));
             }
         }
     }

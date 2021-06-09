@@ -3,6 +3,7 @@ package moe.caa.fabric.quitconfirm.client.screen;
 import moe.caa.fabric.quitconfirm.client.Config;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.Element;
+import net.minecraft.client.gui.Selectable;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ScreenTexts;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -14,6 +15,7 @@ import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -54,8 +56,8 @@ public final class SettleScreen extends Screen {
         keepInActive = new TextFieldWidget(SettleScreen.this.client.textRenderer, 0, 0, 42, 20, LiteralText.EMPTY);
         keepInActive.setText(String.valueOf(Config.CONFIG.keepInAction));
 
-        this.addChild(listWidget = new ListWidget());
-        this.addButton(back = new ButtonWidget(this.width / 2 - 100, this.height - 29, 200, 20, ScreenTexts.BACK, (buttonWidget) -> {
+        this.addDrawableChild(listWidget = new ListWidget());
+        this.addDrawableChild(back = new ButtonWidget(this.width / 2 - 100, this.height - 29, 200, 20, ScreenTexts.BACK, (buttonWidget) -> {
             Config.CONFIG.pushSave();
             client.openScreen(parent);
         }));
@@ -161,6 +163,11 @@ public final class SettleScreen extends Screen {
         public boolean mouseReleased(double mouseX, double mouseY, int button) {
             return settleButton.mouseReleased(mouseX, mouseY, button);
         }
+
+        @Override
+        public List<? extends Selectable> method_37025() {
+            return Collections.singletonList(settleButton);
+        }
     }
 
     public class TextInputListEntry extends Entry {
@@ -185,6 +192,11 @@ public final class SettleScreen extends Screen {
             this.fieldWidget.x = entryWidth - 44 + x;
             this.fieldWidget.y = y;
             this.fieldWidget.render(matrices, mouseX, mouseY, tickDelta);
+        }
+
+        @Override
+        public List<? extends Selectable> method_37025() {
+            return Collections.singletonList(fieldWidget);
         }
     }
 
@@ -216,6 +228,11 @@ public final class SettleScreen extends Screen {
             double startX = (SettleScreen.this.client.currentScreen.width / 2.0 - this.textWidth / 2.0);
             int startY = y + entryHeight - 10;
             renderer.draw(matrices, text, (float) startX, startY, color);
+        }
+
+        @Override
+        public List<? extends Selectable> method_37025() {
+            return new ArrayList<>(0);
         }
     }
 }

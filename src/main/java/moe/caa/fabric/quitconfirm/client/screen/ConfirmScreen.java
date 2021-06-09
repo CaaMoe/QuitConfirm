@@ -45,10 +45,10 @@ public final class ConfirmScreen extends Screen {
                 confirm.active = true;
             }
         }, Config.CONFIG.keepInAction);
-        this.addButton(cancel);
-        this.addButton(confirm);
+        this.addDrawableChild(cancel);
+        this.addDrawableChild(confirm);
 
-        this.addButton(new TexturedButtonWidget(this.width - 22, this.height - 22, 20, 20, 0, 0, 20, SETTLE_ICON_TEXTURE, 32, 64, (buttonWidget) -> {
+        this.addDrawableChild(new TexturedButtonWidget(this.width - 22, this.height - 22, 20, 20, 0, 0, 20, SETTLE_ICON_TEXTURE, 32, 64, (buttonWidget) -> {
             this.client.openScreen(new SettleScreen(this));
         }, new TranslatableText("gui.quitconfirm.settle.title")));
     }
