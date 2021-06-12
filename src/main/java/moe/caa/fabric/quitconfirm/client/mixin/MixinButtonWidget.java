@@ -26,7 +26,7 @@ public abstract class MixinButtonWidget {
     private void onInit(int x, int y, int width, int height, Text message, ButtonWidget.PressAction onPress,
                         ButtonWidget.TooltipSupplier tooltipSupplier, CallbackInfo ci) {
         if (MinecraftClient.getInstance().currentScreen instanceof GameMenuScreen) {
-            if (message instanceof TranslatableText translatableText && translatableText.getKey().equals("menu.returnToMenu")) {
+            if (message instanceof TranslatableText translatableText && (translatableText.getKey().equals("menu.returnToMenu") || translatableText.getKey().equals("menu.disconnect"))) {
                 this.onPress = new ToMainPressAction(MinecraftClient.getInstance());
             }
         }
