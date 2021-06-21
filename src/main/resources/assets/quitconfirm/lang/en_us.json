@@ -1,16 +1,16 @@
 {
   "gui.quitconfirm.title": "Quit",
-  "gui.quitconfirm.integrate.text": "Are you sure you want to save and quit to title?",
-  "gui.quitconfirm.final.text": "Are you sure you want to quit the game ?",
-  "gui.quitconfirm.dedicated.text": "Are you sure you want to disconnect(3rd-party Server)?",
-  "gui.quitconfirm.reams.text": "Are you sure you want to disconnect(Minecraft Realm)?",
-  "gui.quitconfirm.settle.title": "Settles",
-  "text.quitconfirm.settle.whenappear": "When will the confirmation screen appear",
+  "gui.quitconfirm.integrate.text": "Back to the Title Screen?",
+  "gui.quitconfirm.final.text": "Do you really want to quit Minecraft?",
+  "gui.quitconfirm.dedicated.text": "Disconnect (3rd-party Server)?",
+  "gui.quitconfirm.reams.text": "Disconnect (Minecraft Realm)?",
+  "gui.quitconfirm.settle.title": "Option",
+  "text.quitconfirm.settle.whenappear": "At where will the confirmation screen appear",
   "text.quitconfirm.settle.other": "Other settings",
-  "button.quitconfirm.opt.final": "When closing the game window",
-  "button.quitconfirm.opt.integrate": "When quitting single player games",
-  "button.quitconfirm.opt.reams": "When quitting realms games",
-  "button.quitconfirm.opt.dedicated": "When quitting the server",
-  "button.quitconfirm.opt.shortcut": "Use the shortcut keys in the confirmation screen",
-  "button.quitconfirm.opt.keepinactive": "Keep button inactive time"
+  "button.quitconfirm.opt.final": "Clicking 'close' on the window bar",
+  "button.quitconfirm.opt.integrate": "Quitting a single-player game",
+  "button.quitconfirm.opt.reams": "Quitting a Minecraft Realm game",
+  "button.quitconfirm.opt.dedicated": "Quitting a 3rd-party server game",
+  "button.quitconfirm.opt.shortcut": "Use shortcuts in the confirmation screen",
+  "button.quitconfirm.opt.keepinactive": "Keep the inactive interval of buttons"
 }
