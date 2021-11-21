@@ -1,0 +1,16 @@
+{
+  "gui.quitconfirm.window.title": "二次确认",
+  "gui.quitconfirm.integrate.text": "保存并且退出到标题？",
+  "gui.quitconfirm.final.text": "退出游戏？",
+  "gui.quitconfirm.dedicated.text": "断开连接（第三方服务器）？",
+  "gui.quitconfirm.reams.text": "断开连接（领域服务器）？",
+  "gui.quitconfirm.settle.title": "设置",
+  "text.quitconfirm.settle.whenappear": "在什么地方显示确认退出界面",
+  "text.quitconfirm.settle.other": "其他设置",
+  "button.quitconfirm.opt.final": "在关闭游戏窗口时",
+  "button.quitconfirm.opt.integrate": "在退出单人游戏时",
+  "button.quitconfirm.opt.reams": "在退出领域游戏时",
+  "button.quitconfirm.opt.dedicated": "在退出服务器时",
+  "button.quitconfirm.opt.shortcut": "在确认屏幕中使用快捷键",
+  "button.quitconfirm.opt.keepinactive": "保持确认屏幕的按钮灰度时间"
+}

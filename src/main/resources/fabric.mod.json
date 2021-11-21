@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "quitconfirm",
+  "version": "${version}",
+  "name": "QuitConfirm",
+  "icon": "assets/quitconfirm/icon.png",
+  "description": "",
+  "authors": [
+    "CaaMoe",
+    "Xiao_Cozi"
+  ],
+  "contact": {
+    "sources": "https://github.com/CaaMoe/QuitConfirm"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "mixins": [
+    "quitconfirm.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.7.0+build.171",
+    "fabric": "*",
+    "minecraft": "*",
+	"java": ">=17"
+  }
+}
