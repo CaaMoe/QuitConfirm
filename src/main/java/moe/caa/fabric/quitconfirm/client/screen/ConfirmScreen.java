@@ -32,7 +32,7 @@ public class ConfirmScreen extends Screen {
     // 按钮长度
     private static final int buttonHeight = 20;
     // 信息文本下边距
-    private static final int messageBMargin = 75;
+    private static final int messageBMargin = 100;
 
     private final Screen parentScreen;
     private final Text message;
