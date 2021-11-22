@@ -3,6 +3,7 @@ package moe.caa.fabric.quitconfirm.client.screen.confirm;
 import moe.caa.fabric.quitconfirm.client.config.Config;
 import moe.caa.fabric.quitconfirm.client.screen.confirm.styles.BaseStyle;
 import moe.caa.fabric.quitconfirm.client.screen.confirm.styles.BedrockStyle;
+import moe.caa.fabric.quitconfirm.client.screen.confirm.styles.ClassicStyle;
 
 import java.util.Arrays;
 import java.util.List;
@@ -16,7 +17,8 @@ public class StyleFactory {
 
     static {
         STYLES = Arrays.asList(
-                BedrockStyle::new
+                BedrockStyle::new,
+                ClassicStyle::new
         );
         CURRENT_ID = new AtomicInteger(Config.config.get().confirmScreenStyle);
         int size = STYLES.size();
