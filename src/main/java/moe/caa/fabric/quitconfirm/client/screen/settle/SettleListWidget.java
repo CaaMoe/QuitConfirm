@@ -21,6 +21,9 @@ public class SettleListWidget extends ElementListWidget<SettleListWidget.Entry> 
         super(minecraftClient, i, j, k, l, m);
     }
 
+    public abstract static class Entry extends ElementListWidget.Entry<Entry> {
+    }
+
     public class BooleanListEntry extends Entry {
         private final ButtonWidget settleButton;
         private final Text describeText;
@@ -114,6 +117,7 @@ public class SettleListWidget extends ElementListWidget<SettleListWidget.Entry> 
                 public SelectionType getType() {
                     return SelectionType.HOVERED;
                 }
+
                 public void appendNarrations(NarrationMessageBuilder builder) {
                     builder.put(NarrationPart.TITLE, text);
                 }
@@ -137,9 +141,5 @@ public class SettleListWidget extends ElementListWidget<SettleListWidget.Entry> 
             int dy = y + entryHeight;
             client.textRenderer.draw(matrices, this.text, dx, dy - 10, textColor);
         }
-    }
-
-
-    public abstract static class Entry extends ElementListWidget.Entry<Entry> {
     }
 }

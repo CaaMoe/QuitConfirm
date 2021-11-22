@@ -1,8 +1,9 @@
 {
   "gui.quitconfirm.window.title": "Secondary confirmation",
+  "gui.quitconfirm.confirm.style.bedrock": "Bedrock",
   "gui.quitconfirm.integrate.text": "Are you sure you want to save and quit to title?",
   "gui.quitconfirm.final.text": "Are you sure you want to quit the game ?",
-  "gui.quitconfirm.dedicated.text": "Are you sure you want to disconnect(3rd-party Server)?",
+  "gui.quitconfirm.dedicated.text": "Are you sure you want to disconnect(Multiplayer Server)?",
   "gui.quitconfirm.reams.text": "Are you sure you want to disconnect(Minecraft Realm)?",
   "gui.quitconfirm.settle.title": "Settles",
   "text.quitconfirm.settle.whenappear": "When will the confirmation screen appear",

@@ -1,6 +1,6 @@
 package moe.caa.fabric.quitconfirm.client.mixin;
 
-import moe.caa.fabric.quitconfirm.client.screen.ConfirmScreen;
+import moe.caa.fabric.quitconfirm.client.screen.confirm.ConfirmScreen;
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
 import net.minecraft.client.MinecraftClient;
@@ -21,17 +21,22 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(MinecraftClient.class)
 public abstract class MixinMinecraftClient {
 
-    @Shadow @Final private Window window;
+    @Shadow
+    @Nullable
+    public Screen currentScreen;
+    @Shadow
+    @Final
+    private Window window;
+    @Mutable
+    @Shadow
+    private volatile boolean running;
 
-    @Shadow public abstract void setScreen(@Nullable Screen screen);
-
-    @Shadow @Nullable public Screen currentScreen;
-
-    @Mutable @Shadow private volatile boolean running;
+    @Shadow
+    public abstract void setScreen(@Nullable Screen screen);
 
     @Inject(method = "scheduleStop", at = @At("HEAD"), cancellable = true)
     private void onScheduleStop(CallbackInfo ci) {
-        this.setScreen(new ConfirmScreen(currentScreen, new TranslatableText("gui.quitconfirm.final.text"), ()->{
+        this.setScreen(new ConfirmScreen(currentScreen, new TranslatableText("gui.quitconfirm.final.text"), () -> {
             running = false;
         }));
 
