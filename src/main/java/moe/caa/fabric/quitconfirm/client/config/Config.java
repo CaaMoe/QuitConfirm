@@ -34,9 +34,9 @@ public class Config {
     // 在退出存档时显示确认界面
     public boolean inIntegrated = false;
     // 在退出多人时显示确认界面
-    public boolean inDedicatedE = true;
+    public boolean inDedicated = true;
     // 在退出领域时显示确认界面
-    public boolean inReamsE = true;
+    public boolean inReams = true;
     // 响应快捷键
     public boolean shortcutKet = false;
     // 按钮灰度时间
@@ -56,7 +56,7 @@ public class Config {
         if (value != null) config.set(value);
     }
 
-    private static synchronized void save() throws IOException {
+    public static synchronized void save() throws IOException {
         if (!CONFIG_FOLDER.exists() && !CONFIG_FOLDER.mkdirs()) {
             throw new IOException("Unable to create data folder: " + CONFIG_FOLDER.getAbsolutePath());
         }

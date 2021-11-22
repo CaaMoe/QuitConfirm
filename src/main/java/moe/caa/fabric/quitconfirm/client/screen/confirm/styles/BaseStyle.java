@@ -1,6 +1,8 @@
 package moe.caa.fabric.quitconfirm.client.screen.confirm.styles;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -16,7 +18,7 @@ public abstract class BaseStyle extends DrawableHelper {
 
     public abstract ButtonWidget[] generateButtons(Screen screen, ButtonWidget.PressAction onCancel, ButtonWidget.PressAction onConfirm);
 
-    public abstract void render(Screen screen, Text title, Text message,
+    public abstract void render(MinecraftClient client, TextRenderer textRenderer, Screen screen, Text title, Text message,
                                 MatrixStack matrices, int mouseX, int mouseY, float delta);
 
     protected void renderBackground(int startX, int startY, int endX, int endY) {

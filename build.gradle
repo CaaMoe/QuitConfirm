@@ -7,7 +7,7 @@ sourceCompatibility = JavaVersion.VERSION_17
 targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = "QuitConfirm"
-version = "1.4-a"
+version = "1.4"
 group = "moe.caa"
 
 dependencies {

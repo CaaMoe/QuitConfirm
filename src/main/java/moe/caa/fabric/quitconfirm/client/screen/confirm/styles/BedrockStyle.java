@@ -2,6 +2,7 @@ package moe.caa.fabric.quitconfirm.client.screen.confirm.styles;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
@@ -52,15 +53,15 @@ public class BedrockStyle extends BaseStyle {
     }
 
     @Override
-    public void render(Screen screen, Text title, Text message,
+    public void render(MinecraftClient client, TextRenderer textRenderer, Screen screen, Text title, Text message,
                        MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        drawBackground(screen, matrices);
-        drawWindow(title, matrices, (screen.width - windowWidth) / 2, (screen.height - windowHeight) / 2);
-        drawMessage(screen, message, matrices);
+        drawBackground(client, screen, matrices);
+        drawWindow(textRenderer, title, matrices, (screen.width - windowWidth) / 2, (screen.height - windowHeight) / 2);
+        drawMessage(textRenderer, screen, message, matrices);
     }
 
-    private void drawBackground(Screen screen, MatrixStack matrices) {
-        if (MinecraftClient.getInstance().world != null) {
+    private void drawBackground(MinecraftClient client, Screen screen, MatrixStack matrices) {
+        if (client.world != null) {
             this.fillGradient(matrices, 0, 0, screen.width, screen.height, -1072689136, -804253680);
         } else {
             this.renderBackground(0, 0, screen.width, screen.height);
@@ -68,18 +69,18 @@ public class BedrockStyle extends BaseStyle {
         }
     }
 
-    private void drawWindow(Text title, MatrixStack matrices, int x, int y) {
+    private void drawWindow(TextRenderer textRenderer, Text title, MatrixStack matrices, int x, int y) {
         renderBackground(x, y, x + windowWidth, y + windowHeight);
         RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
         RenderSystem.enableBlend();
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderTexture(0, WINDOW_TEXTURE);
         this.drawTexture(matrices, x, y, 0, 0, 252, 140);
-        MinecraftClient.getInstance().textRenderer.draw(matrices, title, (float) (x + 8), (float) (y + 6), 4210752);
+        textRenderer.draw(matrices, title, (float) (x + 8), (float) (y + 6), 4210752);
     }
 
-    private void drawMessage(Screen screen, Text message, MatrixStack matrices) {
-        drawCenteredText(matrices, MinecraftClient.getInstance().textRenderer, message,
+    private void drawMessage(TextRenderer textRenderer, Screen screen, Text message, MatrixStack matrices) {
+        drawCenteredText(matrices, textRenderer, message,
                 screen.width / 2,
                 (screen.height - windowHeight) / 2 + windowHeight - messageBMargin,
                 10526880);

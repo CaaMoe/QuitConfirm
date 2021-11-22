@@ -1,5 +1,5 @@
 {
-  "gui.quitconfirm.window.title": "Secondary confirmation",
+  "gui.quitconfirm.window.title": "Double confirmation on exit",
   "gui.quitconfirm.confirm.style.bedrock": "Bedrock",
   "gui.quitconfirm.integrate.text": "Are you sure you want to save and quit to title?",
   "gui.quitconfirm.final.text": "Are you sure you want to quit the game ?",

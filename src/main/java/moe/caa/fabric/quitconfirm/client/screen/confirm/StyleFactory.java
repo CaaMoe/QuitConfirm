@@ -5,7 +5,7 @@ import moe.caa.fabric.quitconfirm.client.screen.confirm.styles.BedrockStyle;
 
 public class StyleFactory {
 
-    public static BaseStyle createStyleFromConfig(){
+    public static BaseStyle createStyleFromConfig() {
         return new BedrockStyle();
     }
 }

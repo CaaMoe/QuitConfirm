@@ -11,4 +11,5 @@ public class QuitConfirm {
     public static final Timer TIMER = new Timer("QuitConfirm");
     public static final Gson GSON = new GsonBuilder().setPrettyPrinting().create();
     public static final Logger LOGGER = LogManager.getLogger("QuitConfirm");
+    public static final String DO_NAME = "QuitConfirm v1.4";
 }

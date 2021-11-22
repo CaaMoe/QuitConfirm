@@ -36,10 +36,11 @@ public abstract class MixinMinecraftClient {
 
     @Inject(method = "scheduleStop", at = @At("HEAD"), cancellable = true)
     private void onScheduleStop(CallbackInfo ci) {
-        this.setScreen(new ConfirmScreen(currentScreen, new TranslatableText("gui.quitconfirm.final.text"), () -> {
-            running = false;
-        }));
-
+        if (!(currentScreen instanceof ConfirmScreen)) {
+            this.setScreen(new ConfirmScreen(currentScreen, new TranslatableText("gui.quitconfirm.final.text"), () -> {
+                running = false;
+            }));
+        }
         GLFW.glfwSetWindowShouldClose(this.window.getHandle(), false);
         ci.cancel();
     }

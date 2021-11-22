@@ -21,6 +21,11 @@ public class SettleListWidget extends ElementListWidget<SettleListWidget.Entry> 
         super(minecraftClient, i, j, k, l, m);
     }
 
+    @Override
+    public int addEntry(Entry entry) {
+        return super.addEntry(entry);
+    }
+
     public abstract static class Entry extends ElementListWidget.Entry<Entry> {
     }
 

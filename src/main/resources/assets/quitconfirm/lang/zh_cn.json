@@ -1,5 +1,5 @@
 {
-  "gui.quitconfirm.window.title": "二次确认",
+  "gui.quitconfirm.window.title": "退出二次确认",
   "gui.quitconfirm.confirm.style.bedrock": "基岩",
   "gui.quitconfirm.integrate.text": "保存并且退出到标题？",
   "gui.quitconfirm.final.text": "退出游戏？",
