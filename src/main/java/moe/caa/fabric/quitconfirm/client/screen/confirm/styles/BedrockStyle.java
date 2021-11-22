@@ -16,6 +16,7 @@ import java.awt.*;
 
 public class BedrockStyle extends BaseStyle {
     private static final Identifier WINDOW_TEXTURE = new Identifier("quitconfirm:textures/gui/window/window.png");
+    private static final Text DISPLAY_NAME = new TranslatableText("gui.quitconfirm.confirm.style.bedrock");
 
     // 窗口宽度
     private static final int windowWidth = 252;
@@ -26,7 +27,7 @@ public class BedrockStyle extends BaseStyle {
     // 按钮下边距
     private static final int buttonBMargin = 20;
     // 按钮宽度
-    private static final int buttonWidth = 100;
+    private static final int buttonWidth = 150;
     // 按钮长度
     private static final int buttonHeight = 20;
     // 信息文本下边距
@@ -34,7 +35,7 @@ public class BedrockStyle extends BaseStyle {
 
     @Override
     public Text getDisplayName() {
-        return new TranslatableText("gui.quitconfirm.confirm.style.bedrock");
+        return DISPLAY_NAME;
     }
 
     @Override

@@ -6,6 +6,7 @@
   "gui.quitconfirm.reams.text": "Disconnect from Realm.",
   "gui.quitconfirm.settle.title": "Settles",
   "gui.quitconfirm.confirm.style.bedrock": "Bedrock",
+  "gui.quitconfirm.confirm.style.classic": "Classic",
   "text.quitconfirm.settle.whenappear": "When will the confirmation screen appear",
   "text.quitconfirm.settle.other": "Other setting",
   "button.quitconfirm.opt.style": "Display Style",

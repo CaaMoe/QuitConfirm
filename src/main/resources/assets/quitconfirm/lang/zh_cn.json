@@ -6,6 +6,7 @@
   "gui.quitconfirm.reams.text": "断开与领域服务器的连接.",
   "gui.quitconfirm.settle.title": "设置",
   "gui.quitconfirm.confirm.style.bedrock": "基岩",
+  "gui.quitconfirm.confirm.style.classic": "经典",
   "text.quitconfirm.settle.whenappear": "在什么地方显示确认退出界面",
   "text.quitconfirm.settle.other": "其他设置",
   "button.quitconfirm.opt.style": "显示样式",
