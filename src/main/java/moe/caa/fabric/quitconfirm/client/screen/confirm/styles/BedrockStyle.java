@@ -27,7 +27,7 @@ public class BedrockStyle extends BaseStyle {
     // 按钮下边距
     private static final int buttonBMargin = 20;
     // 按钮宽度
-    private static final int buttonWidth = 150;
+    private static final int buttonWidth = 100;
     // 按钮长度
     private static final int buttonHeight = 20;
     // 信息文本下边距
