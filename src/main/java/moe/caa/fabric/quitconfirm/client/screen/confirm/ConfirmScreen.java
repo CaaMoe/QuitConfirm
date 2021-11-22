@@ -2,7 +2,6 @@ package moe.caa.fabric.quitconfirm.client.screen.confirm;
 
 import moe.caa.fabric.quitconfirm.client.main.QuitConfirm;
 import moe.caa.fabric.quitconfirm.client.screen.confirm.styles.BaseStyle;
-import moe.caa.fabric.quitconfirm.client.screen.confirm.styles.BedrockStyle;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
@@ -16,7 +15,7 @@ public class ConfirmScreen extends Screen {
     private final Text message;
     private final Runnable confirm;
 
-    private final BaseStyle style = new BedrockStyle();
+    private BaseStyle style;
 
     public ConfirmScreen(Screen parentScreen, Text message, Runnable confirm) {
         super(new TranslatableText("gui.quitconfirm.window.title"));
@@ -27,6 +26,7 @@ public class ConfirmScreen extends Screen {
 
     @Override
     protected void init() {
+        style = StyleFactory.createStyleFromConfig();
         initButton();
     }
 
