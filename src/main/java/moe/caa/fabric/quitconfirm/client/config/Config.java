@@ -20,11 +20,7 @@ public class Config {
         QuitConfirm.TIMER.schedule(new TimerTask() {
             @Override
             public void run() {
-                try {
-                    save();
-                } catch (Throwable e) {
-                    QuitConfirm.LOGGER.log(Level.ERROR, "Unable to save configuration file: " + CONFIG_FILE.getAbsolutePath(), e);
-                }
+                saveConfig();
             }
         }, 0, 1000 * 3600);
     }
@@ -65,6 +61,14 @@ public class Config {
         }
         try (FileWriter fw = new FileWriter(CONFIG_FILE)) {
             fw.write(QuitConfirm.GSON.toJson(config.get()));
+        }
+    }
+
+    public static void saveConfig() {
+        try {
+            Config.save();
+        } catch (Throwable e) {
+            QuitConfirm.LOGGER.log(Level.ERROR, "Unable to save configuration.", e);
         }
     }
 }

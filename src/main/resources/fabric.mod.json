@@ -20,7 +20,7 @@
   "depends": {
     "fabricloader": ">=0.7.0+build.171",
     "fabric": "*",
-    "minecraft": "*",
+    "minecraft": "1.18-beta.5",
     "java": ">=17"
   }
 }

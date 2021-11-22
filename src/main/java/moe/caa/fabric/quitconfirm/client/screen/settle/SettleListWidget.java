@@ -29,11 +29,11 @@ public class SettleListWidget extends ElementListWidget<SettleListWidget.Entry> 
     public abstract static class Entry extends ElementListWidget.Entry<Entry> {
     }
 
-    public class BooleanListEntry extends Entry {
+    public class ButtonListEntry extends Entry {
         private final ButtonWidget settleButton;
         private final Text describeText;
 
-        public BooleanListEntry(ButtonWidget settleButton, Text describeText) {
+        public ButtonListEntry(ButtonWidget settleButton, Text describeText) {
             this.settleButton = settleButton;
             this.describeText = describeText;
         }
