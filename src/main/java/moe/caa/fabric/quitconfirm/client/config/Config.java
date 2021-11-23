@@ -35,6 +35,8 @@ public class Config {
     public boolean inReams = true;
     // 响应快捷键
     public boolean shortcutKet = false;
+    // 透明背景
+    public boolean transparentBackground = true;
     // 按钮灰度时间
     public long keepInAction = 1000;
     // 确认退出屏幕样式

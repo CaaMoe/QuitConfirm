@@ -15,5 +15,6 @@
   "button.quitconfirm.opt.reams": "When quitting realms games",
   "button.quitconfirm.opt.dedicated": "When quitting the server",
   "button.quitconfirm.opt.shortcut": "Use shortcut keys",
-  "button.quitconfirm.opt.keepinactive": "Button inactive timeout"
+  "button.quitconfirm.opt.keepinactive": "Button inactive timeout",
+  "button.quitconfirm.opt.transparent.background": "Transparent background"
 }

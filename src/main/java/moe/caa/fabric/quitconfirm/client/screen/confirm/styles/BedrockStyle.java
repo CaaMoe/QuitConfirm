@@ -1,6 +1,7 @@
 package moe.caa.fabric.quitconfirm.client.screen.confirm.styles;
 
 import com.mojang.blaze3d.systems.RenderSystem;
+import moe.caa.fabric.quitconfirm.client.config.Config;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.DrawableHelper;
@@ -63,11 +64,13 @@ public class BedrockStyle extends BaseStyle {
 
     private void drawBackground(MinecraftClient client, Screen screen, MatrixStack matrices) {
         if (client.world != null) {
-            this.fillGradient(matrices, 0, 0, screen.width, screen.height, -1072689136, -804253680);
-        } else {
-            this.renderBackground(0, 0, screen.width, screen.height);
-            DrawableHelper.fill(matrices, 0, 0, screen.width, screen.height, new Color(16, 16, 16, 179).getRGB());
+            if (Config.config.get().transparentBackground) {
+                this.fillGradient(matrices, 0, 0, screen.width, screen.height, -1072689136, -804253680);
+                return;
+            }
         }
+        this.renderBackground(0, 0, screen.width, screen.height);
+        DrawableHelper.fill(matrices, 0, 0, screen.width, screen.height, new Color(16, 16, 16, 179).getRGB());
     }
 
     private void drawWindow(TextRenderer textRenderer, Text title, MatrixStack matrices, int x, int y) {

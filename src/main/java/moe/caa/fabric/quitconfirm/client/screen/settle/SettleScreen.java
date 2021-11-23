@@ -18,6 +18,7 @@ public class SettleScreen extends Screen {
     private ButtonWidget inReams;
     private ButtonWidget inDedicated;
     private ButtonWidget shortcutKet;
+    private ButtonWidget transparentBackground;
     private TextFieldWidget keepInActive;
     private ButtonWidget confirmScreenStyle;
 
@@ -36,6 +37,7 @@ public class SettleScreen extends Screen {
         inDedicated.setMessage(Config.config.get().inDedicated ? ScreenTexts.ON : ScreenTexts.OFF);
         shortcutKet.setMessage(Config.config.get().shortcutKet ? ScreenTexts.ON : ScreenTexts.OFF);
         confirmScreenStyle.setMessage(StyleFactory.createStyleFromConfig().getDisplayName());
+        transparentBackground.setMessage(Config.config.get().transparentBackground ? ScreenTexts.ON : ScreenTexts.OFF);
     }
 
     @Override
@@ -59,6 +61,9 @@ public class SettleScreen extends Screen {
 
         shortcutKet = new ButtonWidget(0, 0, 44, 20, LiteralText.EMPTY, (buttonWidget) ->
                 Config.config.get().shortcutKet = !Config.config.get().shortcutKet);
+
+        transparentBackground = new ButtonWidget(0, 0, 44, 20, LiteralText.EMPTY, (buttonWidget) ->
+                Config.config.get().transparentBackground = !Config.config.get().transparentBackground);
 
         confirmScreenStyle = new ButtonWidget(0, 0, 44, 20, LiteralText.EMPTY, (buttonWidget) ->
                 StyleFactory.nextStyleFromConfig());
@@ -101,6 +106,7 @@ public class SettleScreen extends Screen {
 
         listWidget.addEntry(listWidget.new CategoryEntry(new TranslatableText("text.quitconfirm.settle.other"), 11184810));
         listWidget.addEntry(listWidget.new ButtonListEntry(confirmScreenStyle, new TranslatableText("button.quitconfirm.opt.style")));
+        listWidget.addEntry(listWidget.new ButtonListEntry(transparentBackground, new TranslatableText("button.quitconfirm.opt.transparent.background")));
         listWidget.addEntry(listWidget.new ButtonListEntry(shortcutKet, new TranslatableText("button.quitconfirm.opt.shortcut")));
         listWidget.addEntry(listWidget.new InputListEntry(keepInActive, new TranslatableText("button.quitconfirm.opt.keepinactive")));
         this.addDrawableChild(listWidget);

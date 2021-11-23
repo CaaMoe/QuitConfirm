@@ -1,5 +1,6 @@
 package moe.caa.fabric.quitconfirm.client.screen.confirm.styles;
 
+import moe.caa.fabric.quitconfirm.client.config.Config;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.screen.Screen;
@@ -44,12 +45,18 @@ public class ClassicStyle extends BaseStyle {
     @Override
     public void render(MinecraftClient client, TextRenderer textRenderer, Screen screen, Text title, Text message,
                        MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        drawBackground(screen, matrices);
+        drawBackground(client, screen, matrices);
         drawTextAndMessage(textRenderer, screen, title, message, matrices);
     }
 
-    private void drawBackground(Screen screen, MatrixStack matrices) {
-        screen.renderBackground(matrices);
+    private void drawBackground(MinecraftClient client, Screen screen, MatrixStack matrices) {
+        if (client.world != null) {
+            if (Config.config.get().transparentBackground) {
+                this.fillGradient(matrices, 0, 0, screen.width, screen.height, -1072689136, -804253680);
+                return;
+            }
+        }
+        this.renderBackground(0, 0, screen.width, screen.height);
     }
 
     private void drawTextAndMessage(TextRenderer textRenderer, Screen screen, Text title, Text message, MatrixStack matrices) {

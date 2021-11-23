@@ -15,5 +15,6 @@
   "button.quitconfirm.opt.reams": "在退出领域游戏时",
   "button.quitconfirm.opt.dedicated": "在退出服务器时",
   "button.quitconfirm.opt.shortcut": "在确认屏幕中使用快捷键",
-  "button.quitconfirm.opt.keepinactive": "保持确认屏幕的按钮灰度时间"
+  "button.quitconfirm.opt.keepinactive": "保持确认屏幕的按钮灰度时间",
+  "button.quitconfirm.opt.transparent.background": "透明背景"
 }
