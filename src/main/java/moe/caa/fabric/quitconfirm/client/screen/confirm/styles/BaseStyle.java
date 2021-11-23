@@ -16,6 +16,7 @@ public abstract class BaseStyle extends DrawableHelper {
 
     public abstract Text getDisplayName();
 
+    // 指定返回两个对象的数组，第一个放取消按钮，第二个放确认按钮
     public abstract ButtonWidget[] generateButtons(Screen screen, ButtonWidget.PressAction onCancel, ButtonWidget.PressAction onConfirm);
 
     public abstract void render(MinecraftClient client, TextRenderer textRenderer, Screen screen, Text title, Text message,

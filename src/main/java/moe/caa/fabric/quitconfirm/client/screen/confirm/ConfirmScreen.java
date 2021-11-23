@@ -21,6 +21,9 @@ public class ConfirmScreen extends Screen {
     private final ButtonWidget.PressAction onCancel;
     private final ButtonWidget.PressAction onConfirm;
 
+    private ButtonWidget cancel;
+    private ButtonWidget confirm;
+
     private BaseStyle style;
 
     public ConfirmScreen(Screen parentScreen, Text message, Runnable confirm) {
@@ -31,7 +34,7 @@ public class ConfirmScreen extends Screen {
         super(new TranslatableText("gui.quitconfirm.window.title"));
         this.message = message;
 
-        onCancel = (buttonWidget  /* NULLABLE */) -> this.client.setScreen(parentScreen);
+        onCancel = (buttonWidget) -> this.client.setScreen(parentScreen);
         onConfirm = confirm;
     }
 
@@ -50,6 +53,8 @@ public class ConfirmScreen extends Screen {
     private void initButton() {
         ButtonWidget[] buttonWidgets = style.generateButtons(this, onCancel, onConfirm);
 
+        cancel = buttonWidgets[0];
+        confirm = buttonWidgets[1];
         for (ButtonWidget widget : buttonWidgets) {
             widget.active = false;
             this.addDrawableChild(widget);
@@ -76,7 +81,7 @@ public class ConfirmScreen extends Screen {
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         if (Config.config.get().shortcutKet && keyCode == 257 /* ENTER */) {
-            onConfirm.onPress(null);
+            onConfirm.onPress(confirm);
         }
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
