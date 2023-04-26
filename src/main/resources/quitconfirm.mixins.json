@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "moe.caa.fabric.quitconfirm.client.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+  ],
+  "client": [
+    "MixinResourceReloadLogger"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

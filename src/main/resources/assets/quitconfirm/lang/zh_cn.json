@@ -1,0 +1,20 @@
+{
+  "gui.quitconfirm.window.title": "你确定？",
+  "gui.quitconfirm.integrate.text": "保存并退出到标题.",
+  "gui.quitconfirm.final.text": "退出游戏.",
+  "gui.quitconfirm.dedicated.text": "断开与多人服务器的连接.",
+  "gui.quitconfirm.reams.text": "断开与领域服务器的连接.",
+  "gui.quitconfirm.settle.title": "设置",
+  "gui.quitconfirm.confirm.style.bedrock": "基岩",
+  "gui.quitconfirm.confirm.style.classic": "经典",
+  "text.quitconfirm.settle.whenappear": "在什么地方显示确认退出界面",
+  "text.quitconfirm.settle.other": "其他设置",
+  "button.quitconfirm.opt.style": "显示样式",
+  "button.quitconfirm.opt.final": "在关闭游戏窗口时",
+  "button.quitconfirm.opt.integrate": "在退出单人游戏时",
+  "button.quitconfirm.opt.reams": "在退出领域游戏时",
+  "button.quitconfirm.opt.dedicated": "在退出服务器时",
+  "button.quitconfirm.opt.shortcut": "在确认屏幕中使用快捷键",
+  "button.quitconfirm.opt.keepinactive": "保持确认屏幕的按钮灰度时间",
+  "button.quitconfirm.opt.transparent.background": "透明背景"
+}

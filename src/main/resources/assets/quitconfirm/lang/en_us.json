@@ -1,0 +1,20 @@
+{
+  "gui.quitconfirm.window.title": "Are you sure?",
+  "gui.quitconfirm.integrate.text": "Save and quit to title",
+  "gui.quitconfirm.final.text": "Quit the game.",
+  "gui.quitconfirm.dedicated.text": "Disconnect from Multiplayer.",
+  "gui.quitconfirm.reams.text": "Disconnect from Realm.",
+  "gui.quitconfirm.settle.title": "Settles",
+  "gui.quitconfirm.confirm.style.bedrock": "Bedrock",
+  "gui.quitconfirm.confirm.style.classic": "Classic",
+  "text.quitconfirm.settle.whenappear": "When will the confirmation screen appear",
+  "text.quitconfirm.settle.other": "Other setting",
+  "button.quitconfirm.opt.style": "Display Style",
+  "button.quitconfirm.opt.final": "When closing the game window",
+  "button.quitconfirm.opt.integrate": "When quitting single player games",
+  "button.quitconfirm.opt.reams": "When quitting realms games",
+  "button.quitconfirm.opt.dedicated": "When quitting the server",
+  "button.quitconfirm.opt.shortcut": "Use shortcut keys",
+  "button.quitconfirm.opt.keepinactive": "Button inactive timeout",
+  "button.quitconfirm.opt.transparent.background": "Transparent background"
+}

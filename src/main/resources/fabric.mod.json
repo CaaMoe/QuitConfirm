@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "quitconfirm",
+  "version": "${version}",
+  "name": "QuitConfirm",
+  "description": "",
+  "authors": [
+    "CaaMoe",
+    "Xiao_Cozi"
+  ],
+  "contact": {
+    "sources": "https://github.com/CaaMoe/QuitConfirm"
+  },
+  "license": "MIT",
+  "icon": "assets/quitconfirm/icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "moe.caa.fabric.quitconfirm.client.main.QuitConfirm"
+    ],
+    "modmenu": [
+      "moe.caa.fabric.quitconfirm.client.modmenu.QuitConfirmModMenu"
+    ]
+  },
+  "mixins": [
+    "quitconfirm.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.14.9",
+    "fabric-api": "*",
+    "minecraft": "~1.19",
+    "java": ">=17"
+  },
+  "dependencies": {
+    "yet_another_config_lib": "^2.5.0+1.19.4"
+  }
+}
