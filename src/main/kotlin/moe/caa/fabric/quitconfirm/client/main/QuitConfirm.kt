@@ -48,7 +48,7 @@ class QuitConfirm : ClientModInitializer {
             var key: String? = null
             if (it.message is TranslatableTextContent) {
                 key = (it.message as TranslatableTextContent).key
-            } else if (it.message is MutableText && it.message.content is MutableText) {
+            } else if (it.message is MutableText && it.message.content is TranslatableTextContent) {
                 key = (it.message.content as TranslatableTextContent).key
             }
 
