@@ -16,37 +16,37 @@ fun generateConfigScreen(parent: Screen): Screen = YetAnotherConfigLib.createBui
     .category(ConfigCategory.createBuilder()
         .name(Text.literal("基础配置"))
         .group(OptionGroup.createBuilder()
-            .name(Text.literal("在什么地方启用退出确认功能"))
-            .option(Option.createBuilder(Boolean::class.javaPrimitiveType)
+            .name(Text.literal("在什么地方启用什么功能"))
+            .option(Option.createBuilder(Config.ConfirmType::class.java)
                 .name(Text.literal("在最终退出游戏时"))
                 .binding(
-                    true,
-                    { return@binding Config.gsonConfigInstance.config.confirmEnableInFinalQuit }) {
-                    Config.gsonConfigInstance.config.confirmEnableInFinalQuit = it
+                    Config.ConfirmType.SCREEN,
+                    { return@binding Config.gsonConfigInstance.config.confirmTypeInFinalQuit }) {
+                    Config.gsonConfigInstance.config.confirmTypeInFinalQuit = it
                 }
-                .controller { BooleanController(it) }
+                .controller { it -> EnumController(it) { Text.literal(it.displayName) } }
                 .build())
-            .option(Option.createBuilder(Boolean::class.javaPrimitiveType)
+            .option(Option.createBuilder(Config.ConfirmType::class.java)
                 .name(Text.literal("在退出单人游戏时"))
                 .binding(
-                    true,
-                    { return@binding Config.gsonConfigInstance.config.confirmEnableInSinglePlayer }) {
-                    Config.gsonConfigInstance.config.confirmEnableInSinglePlayer = it
+                    Config.ConfirmType.TOAST,
+                    { return@binding Config.gsonConfigInstance.config.confirTypeInSinglePlayer }) {
+                    Config.gsonConfigInstance.config.confirTypeInSinglePlayer = it
                 }
-                .controller { BooleanController(it) }
+                .controller { it -> EnumController(it) { Text.literal(it.displayName) } }
                 .build())
-            .option(Option.createBuilder(Boolean::class.javaPrimitiveType)
+            .option(Option.createBuilder(Config.ConfirmType::class.java)
                 .name(Text.literal("在退出多人游戏时"))
                 .binding(
-                    true,
-                    { return@binding Config.gsonConfigInstance.config.confirmEnableInMultiplayer }) {
-                    Config.gsonConfigInstance.config.confirmEnableInMultiplayer = it
+                    Config.ConfirmType.TOAST,
+                    { return@binding Config.gsonConfigInstance.config.confirmTypeInMultiplayer }) {
+                    Config.gsonConfigInstance.config.confirmTypeInMultiplayer = it
                 }
-                .controller { BooleanController(it) }
+                .controller { it -> EnumController(it) { Text.literal(it.displayName) } }
                 .build())
             .build())
         .group(OptionGroup.createBuilder()
-            .name(Text.of("其他设置"))
+            .name(Text.of("确认界面屏幕设置"))
             .option(Option.createBuilder(Boolean::class.javaPrimitiveType)
                 .name(Text.literal("确认屏幕响应快捷键"))
                 .binding(
@@ -71,6 +71,34 @@ fun generateConfigScreen(parent: Screen): Screen = YetAnotherConfigLib.createBui
                     Config.gsonConfigInstance.config.confirmScreenDisplayType = it
                 }
                 .controller { it -> EnumController(it) { Text.literal(it.displayName) } }
+                .build())
+            .build())
+        .group(OptionGroup.createBuilder()
+            .name(Text.of("确认界面土司设置"))
+            .option(Option.createBuilder(Long::class.javaPrimitiveType)
+                .name(Text.literal("土司停留时长"))
+                .binding(
+                    5000L, { return@binding Config.gsonConfigInstance.config.toastConfirmDisplayTime }) {
+                    Config.gsonConfigInstance.config.toastConfirmDisplayTime = it
+                }
+                .controller { LongSliderController(it, 1000, 10000, 500) }
+                .build())
+            .option(Option.createBuilder(Long::class.javaPrimitiveType)
+                .name(Text.literal("土司响应开始时间"))
+                .binding(
+                    500L, { return@binding Config.gsonConfigInstance.config.toastConfirmStartAliveTime }) {
+                    Config.gsonConfigInstance.config.toastConfirmStartAliveTime = it
+                }
+                .controller { LongSliderController(it, 0, 10000, 500) }
+                .build())
+            .option(Option.createBuilder(Long::class.javaPrimitiveType)
+                .name(Text.literal("土司响应结束时间"))
+                .binding(
+                    5000L,
+                    { return@binding Config.gsonConfigInstance.config.toastConfirmEndAliveTime }) {
+                    Config.gsonConfigInstance.config.toastConfirmEndAliveTime = it
+                }
+                .controller { LongSliderController(it, 1000, 10000, 500) }
                 .build())
             .build())
         .build())
