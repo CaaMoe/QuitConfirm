@@ -6,6 +6,8 @@
   "mixins": [
   ],
   "client": [
+    "MixinButtonWidget",
+    "MixinMinecraftClient",
     "MixinResourceReloadLogger"
   ],
   "injectors": {
