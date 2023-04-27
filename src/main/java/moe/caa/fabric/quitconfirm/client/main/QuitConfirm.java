@@ -24,10 +24,10 @@ public class QuitConfirm implements ClientModInitializer {
     public void onInitializeClient() {
         Config.load();
         ClientScheduleStopEvent.CLIENT_SCHEDULE_STOP.register(() -> {
-            if (Config.config.confirmTypeInFinalQuit == Config.ConfirmType.TOAST) {
+            if (Config.config.confirmTypeInFinalQuit == Config.ConfirmTypeEnum.TOAST) {
                 return toastInFinalQuitHandler.trigger();
             }
-            if (Config.config.confirmTypeInFinalQuit == Config.ConfirmType.SCREEN) {
+            if (Config.config.confirmTypeInFinalQuit == Config.ConfirmTypeEnum.SCREEN) {
                 return toastInFinalQuitHandler.trigger();
             }
             return EventResult.PASS;

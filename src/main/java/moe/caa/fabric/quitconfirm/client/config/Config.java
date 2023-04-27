@@ -13,9 +13,9 @@ public class Config {
     private static final Gson gson = new Gson();
     private static final Path path = Path.of("config/quitconfirm.json");
 
-    public ConfirmType confirmTypeInFinalQuit = ConfirmType.SCREEN;
-    public ConfirmType confirmTypeInSinglePlayer = ConfirmType.TOAST;
-    public ConfirmType confirmTypeInMultiplayer = ConfirmType.TOAST;
+    public ConfirmTypeEnum confirmTypeInFinalQuit = ConfirmTypeEnum.SCREEN;
+    public ConfirmTypeEnum confirmTypeInSinglePlayer = ConfirmTypeEnum.TOAST;
+    public ConfirmTypeEnum confirmTypeInMultiplayer = ConfirmTypeEnum.TOAST;
     public boolean enableScreenShortcutKey = true;
     public long keepDarkInConfirmScreenTime = 1000L;
     public ConfirmScreenDisplayTypeEnum confirmScreenDisplayType = ConfirmScreenDisplayTypeEnum.BEDROCK;
@@ -23,9 +23,9 @@ public class Config {
     public long toastConfirmStartAliveTime = 500L;
     public long toastConfirmEndAliveTime = 5000L;
 
-    public static void load(){
+    public static void load() {
         try {
-            if (Files.notExists(path)){
+            if (Files.notExists(path)) {
                 save();
                 return;
             }
@@ -35,7 +35,7 @@ public class Config {
         }
     }
 
-    public static void save(){
+    public static void save() {
         try {
             Files.writeString(path, gson.toJson(config), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
         } catch (IOException e) {
@@ -43,9 +43,14 @@ public class Config {
         }
     }
 
+    public <T extends Enum<T>> T nextEnum(Class<T> tClass, T value) {
+        int ordinal = value.ordinal();
+        T[] constants = tClass.getEnumConstants();
+        return constants[(ordinal + 1) % constants.length];
+    }
+
     public enum ConfirmScreenDisplayTypeEnum {
         CLASSIC("经典"),
-        CLASSIC_OPAQUE("经典(不透明)"),
         BEDROCK("基岩"),
         BEDROCK_OPAQUE("基岩(不透明)");
         public final String displayName;
@@ -56,13 +61,13 @@ public class Config {
     }
 
 
-    public enum ConfirmType {
+    public enum ConfirmTypeEnum {
         TOAST("土司"),
         SCREEN("屏幕"),
         NONE("关闭");
         public final String displayName;
 
-        ConfirmType(String displayName) {
+        ConfirmTypeEnum(String displayName) {
             this.displayName = displayName;
         }
     }

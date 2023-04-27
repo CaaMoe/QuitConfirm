@@ -1,4 +1,4 @@
-package moe.caa.fabric.quitconfirm.client.screen;
+package moe.caa.fabric.quitconfirm.client.screen.setting;
 
 import com.google.common.collect.ImmutableList;
 import net.minecraft.client.MinecraftClient;
@@ -8,6 +8,7 @@ import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.gui.screen.narration.NarrationPart;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.gui.widget.ElementListWidget;
+import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
 
@@ -60,6 +61,34 @@ public class SettingElementListWidget extends ElementListWidget<SettingElementLi
             int dx = client.currentScreen.width / 2 - this.textWidth / 2;
             int dy = y + entryHeight;
             client.textRenderer.draw(matrices, this.text, dx, dy - client.textRenderer.fontHeight, textColor);
+        }
+    }
+
+    public class InputListEntry extends Entry {
+        private final TextFieldWidget fieldWidget;
+        private final Text describeText;
+
+        public InputListEntry(TextFieldWidget fieldWidget, Text describeText) {
+            this.fieldWidget = fieldWidget;
+            this.describeText = describeText;
+        }
+
+        @Override
+        public List<? extends Element> children() {
+            return Collections.singletonList(fieldWidget);
+        }
+
+        @Override
+        public void render(MatrixStack matrices, int index, int y, int x, int entryWidth, int entryHeight, int mouseX, int mouseY, boolean hovered, float tickDelta) {
+            client.textRenderer.draw(matrices, describeText, x, (int) (y + client.textRenderer.fontHeight / 2.0), 16777215);
+            this.fieldWidget.setX(entryWidth - fieldWidget.getWidth() + x);
+            this.fieldWidget.setY(y);
+            this.fieldWidget.render(matrices, mouseX, mouseY, tickDelta);
+        }
+
+        @Override
+        public List<? extends Selectable> selectableChildren() {
+            return Collections.singletonList(fieldWidget);
         }
     }
 
