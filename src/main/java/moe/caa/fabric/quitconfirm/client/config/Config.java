@@ -6,6 +6,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import moe.caa.fabric.quitconfirm.client.main.QuitConfirm;
 import moe.caa.fabric.quitconfirm.client.screen.confirm.style.BaseStyle;
+import moe.caa.fabric.quitconfirm.client.screen.confirm.style.BedrockStyle;
 import moe.caa.fabric.quitconfirm.client.screen.confirm.style.ClassicStyle;
 
 import java.io.IOException;
@@ -85,7 +86,7 @@ public class Config {
 
     public enum ConfirmScreenDisplayTypeEnum {
         CLASSIC("经典", ClassicStyle::new),
-        BEDROCK("基岩", ClassicStyle::new);
+        BEDROCK("基岩", BedrockStyle::new);
         public final String displayName;
         public final Supplier<BaseStyle> baseStyleSupplier;
 
