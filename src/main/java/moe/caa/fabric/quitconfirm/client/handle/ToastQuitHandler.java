@@ -4,13 +4,14 @@ import moe.caa.fabric.quitconfirm.client.config.Config;
 import moe.caa.fabric.quitconfirm.client.event.EventResult;
 import moe.caa.fabric.quitconfirm.client.toast.QuitToast;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.text.Text;
 
 public class ToastQuitHandler {
-    private final String message;
+    private final Text message;
     private State state = State.INACTIVE;
     private long startTime = 0;
 
-    public ToastQuitHandler(String message) {
+    public ToastQuitHandler(Text message) {
         this.message = message;
     }
 

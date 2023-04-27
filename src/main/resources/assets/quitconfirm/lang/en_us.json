@@ -1,0 +1,20 @@
+{
+  "toast.quitconfirm.confirm.title": "Exit secondary confirmation.",
+  "toast.quitconfirm.confirm.content.infinal": "Close the game, please try again.",
+  "toast.quitconfirm.confirm.content.insingleplay": "Exit single player game, please try again.",
+  "toast.quitconfirm.confirm.content.inmultiplay": "Exit multi player game, please try again.",
+  "screen.quitconfirm.confirm.title": "Are you sure?",
+  "screen.quitconfirm.confirm.content.infinal": "Close the game.",
+  "screen.quitconfirm.confirm.content.insingleplay": "Exit single player game.",
+  "screen.quitconfirm.confirm.content.inmultiplay": "Exit multi player game.",
+  "config.quitconfirm.confirmtype.toast": "Toast",
+  "config.quitconfirm.confirmtype.screen": "Screen",
+  "config.quitconfirm.confirmtype.none": "Disable",
+  "config.quitconfirm.screentype.classic": "Classic",
+  "config.quitconfirm.screentype.bedrock": "Bedrock",
+  "config.quitconfirm.setting.title": "Settings",
+  "config.quitconfirm.setting.confirmtype.category": "Set the secondary confirmation method.",
+  "config.quitconfirm.setting.confirmtype.infinal": "When closing the window.",
+  "config.quitconfirm.setting.confirmtype.inmultiplayer": "When exiting a multiplayer game.",
+  "config.quitconfirm.setting.confirmtype.insingleplayer": "When exiting a single player game."
+}

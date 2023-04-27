@@ -9,8 +9,8 @@ import net.minecraft.text.Text;
 
 public class ConfirmScreen extends Screen {
     private final Text message;
-    private final ButtonWidget.PressAction onCancel;
-    private final ButtonWidget.PressAction onConfirm;
+    private final Runnable onCancel;
+    private final Runnable onConfirm;
     private final long openTime;
     private final BaseStyle style = Config.config.confirmScreenDisplayType.baseStyleSupplier.get();
     private ButtonWidget cancel;
@@ -23,15 +23,14 @@ public class ConfirmScreen extends Screen {
     }
 
     public ConfirmScreen(Screen parentScreen, Text message, Runnable confirm) {
-        this(parentScreen, message, button -> confirm.run());
-    }
-
-    public ConfirmScreen(Screen parentScreen, Text message, ButtonWidget.PressAction confirm) {
-        super(Text.literal("你确定？"));
-        openTime = System.currentTimeMillis();
+        super(Text.translatable("screen.quitconfirm.confirm.title"));
+        this.openTime = System.currentTimeMillis();
         this.message = message;
-        onCancel = (buttonWidget) -> this.client.setScreen(parentScreen);
-        onConfirm = confirm;
+        this.onCancel = () -> this.client.setScreen(parentScreen);
+        this.onConfirm = () -> {
+            confirmed = true;
+            confirm.run();
+        };
     }
 
     @Override
@@ -50,10 +49,10 @@ public class ConfirmScreen extends Screen {
     private void initButton() {
         confirm = style.generateConfirmButtons(this, button -> {
             confirmed = true;
-            confirm.onPress();
+            onConfirm.run();
         });
 
-        cancel = style.generateCancelButtons(this, onCancel);
+        cancel = style.generateCancelButtons(this, button -> onCancel.run());
 
         confirm.active = false;
         cancel.active = false;
@@ -70,7 +69,7 @@ public class ConfirmScreen extends Screen {
     @Override
     public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
         if (Config.config.enableScreenShortcutKey && keyCode == 257 /* ENTER */) {
-            onConfirm.onPress(confirm);
+            onConfirm.run();
         }
         return super.keyPressed(keyCode, scanCode, modifiers);
     }
@@ -78,5 +77,10 @@ public class ConfirmScreen extends Screen {
     @Override
     public boolean shouldCloseOnEsc() {
         return Config.config.enableScreenShortcutKey;
+    }
+
+    @Override
+    public void close() {
+        onCancel.run();
     }
 }

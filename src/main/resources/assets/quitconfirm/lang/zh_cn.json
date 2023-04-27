@@ -1,0 +1,20 @@
+{
+  "config.quitconfirm.confirmtype.toast": "土司",
+  "config.quitconfirm.confirmtype.screen": "屏幕",
+  "config.quitconfirm.confirmtype.none": "关",
+  "config.quitconfirm.screentype.classic": "经典",
+  "config.quitconfirm.screentype.bedrock": "基岩",
+  "config.quitconfirm.setting.title": "设置",
+  "config.quitconfirm.setting.confirmtype.infinal": "当关闭游戏窗口时",
+  "config.quitconfirm.setting.confirmtype.inmultiplayer": "当退出多人游戏时",
+  "config.quitconfirm.setting.confirmtype.insingleplayer": "当退出单人游戏时",
+  "config.quitconfirm.setting.confirmtype.category": "设置退出二次确认的方式。",
+  "toast.quitconfirm.confirm.title": "二次确认提示",
+  "toast.quitconfirm.confirm.content.infinal": "你将要关闭游戏，请再次操作以关闭",
+  "toast.quitconfirm.confirm.content.insingleplay": "你将要退出单人游戏，请再次操作",
+  "toast.quitconfirm.confirm.content.inmultiplay": "你将要退出多人游戏，请再次操作",
+  "screen.quitconfirm.confirm.title": "你确定码？",
+  "screen.quitconfirm.confirm.content.infinal": "关闭这个游戏",
+  "screen.quitconfirm.confirm.content.insingleplay": "退出单人游戏",
+  "screen.quitconfirm.confirm.content.inmultiplay": "退出多人游戏"
+}

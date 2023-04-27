@@ -8,6 +8,8 @@ import moe.caa.fabric.quitconfirm.client.main.QuitConfirm;
 import moe.caa.fabric.quitconfirm.client.screen.confirm.style.BaseStyle;
 import moe.caa.fabric.quitconfirm.client.screen.confirm.style.BedrockStyle;
 import moe.caa.fabric.quitconfirm.client.screen.confirm.style.ClassicStyle;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableTextContent;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -85,12 +87,12 @@ public class Config {
     }
 
     public enum ConfirmScreenDisplayTypeEnum {
-        CLASSIC("经典", ClassicStyle::new),
-        BEDROCK("基岩", BedrockStyle::new);
-        public final String displayName;
+        CLASSIC(Text.translatable("config.quitconfirm.screentype.classic"), ClassicStyle::new),
+        BEDROCK(Text.translatable("config.quitconfirm.screentype.bedrock"), BedrockStyle::new);
+        public final Text displayName;
         public final Supplier<BaseStyle> baseStyleSupplier;
 
-        ConfirmScreenDisplayTypeEnum(String displayName, Supplier<BaseStyle> baseStyleSupplier) {
+        ConfirmScreenDisplayTypeEnum(Text displayName, Supplier<BaseStyle> baseStyleSupplier) {
             this.displayName = displayName;
             this.baseStyleSupplier = baseStyleSupplier;
         }
@@ -98,12 +100,12 @@ public class Config {
 
 
     public enum ConfirmTypeEnum {
-        TOAST("土司"),
-        SCREEN("屏幕"),
-        NONE("关闭");
-        public final String displayName;
+        TOAST(Text.translatable("config.quitconfirm.confirmtype.toast")),
+        SCREEN(Text.translatable("config.quitconfirm.confirmtype.screen")),
+        NONE(Text.translatable("config.quitconfirm.confirmtype.none"));
+        public final Text displayName;
 
-        ConfirmTypeEnum(String displayName) {
+        ConfirmTypeEnum(Text displayName) {
             this.displayName = displayName;
         }
     }

@@ -16,7 +16,7 @@ public class SettingScreen extends Screen {
     private ButtonWidget back;
 
     public SettingScreen(Screen screen) {
-        super(Text.literal("设置"));
+        super(Text.translatable("config.quitconfirm.setting.title"));
         parentScreen = screen;
     }
 
@@ -31,40 +31,40 @@ public class SettingScreen extends Screen {
 
         SettingElementListWidget listWidget = new SettingElementListWidget(this.client, this.width, this.height, 30 /* 上边距 */, height - 40/* 下边距 */, 24);
         {
-            MutableText category = Text.literal("设置退出二次确认的方式");
+            MutableText category = Text.translatable("config.quitconfirm.setting.confirmtype.category");
             listWidget.addEntry(listWidget.new CategoryEntry(category.setStyle(category.getStyle().withBold(true)), 11184810));
 
             listWidget.addEntry(listWidget.new ButtonListEntry(ButtonWidget
-                    .builder(Text.literal(Config.config.confirmTypeInFinalQuit.displayName), (button) -> {
+                    .builder(Config.config.confirmTypeInFinalQuit.displayName, (button) -> {
                         Config.config.confirmTypeInFinalQuit = Config.config.nextEnum(Config.ConfirmTypeEnum.class, Config.config.confirmTypeInFinalQuit);
-                        button.setMessage(Text.literal(Config.config.confirmTypeInFinalQuit.displayName));
+                        button.setMessage((Config.config.confirmTypeInFinalQuit.displayName));
                     })
-                    .dimensions(0, 0, 40, 20).build(), Text.literal("关闭游戏窗口时的确认方式")));
+                    .dimensions(0, 0, 50, 20).build(), Text.translatable("config.quitconfirm.setting.confirmtype.infinal")));
 
             listWidget.addEntry(listWidget.new ButtonListEntry(ButtonWidget
-                    .builder(Text.literal(Config.config.confirmTypeInSinglePlayer.displayName), (button) -> {
+                    .builder((Config.config.confirmTypeInSinglePlayer.displayName), (button) -> {
                         Config.config.confirmTypeInSinglePlayer = Config.config.nextEnum(Config.ConfirmTypeEnum.class, Config.config.confirmTypeInSinglePlayer);
-                        button.setMessage(Text.literal(Config.config.confirmTypeInSinglePlayer.displayName));
+                        button.setMessage((Config.config.confirmTypeInSinglePlayer.displayName));
                     })
-                    .dimensions(0, 0, 40, 20).build(), Text.literal("退出单人游戏时的确认方式")));
+                    .dimensions(0, 0, 50, 20).build(), Text.translatable("config.quitconfirm.setting.confirmtype.insingleplayer")));
 
             listWidget.addEntry(listWidget.new ButtonListEntry(ButtonWidget
-                    .builder(Text.literal(Config.config.confirmTypeInMultiplayer.displayName), (button) -> {
+                    .builder((Config.config.confirmTypeInMultiplayer.displayName), (button) -> {
                         Config.config.confirmTypeInMultiplayer = Config.config.nextEnum(Config.ConfirmTypeEnum.class, Config.config.confirmTypeInMultiplayer);
-                        button.setMessage(Text.literal(Config.config.confirmTypeInMultiplayer.displayName));
+                        button.setMessage((Config.config.confirmTypeInMultiplayer.displayName));
                     })
-                    .dimensions(0, 0, 40, 20).build(), Text.literal("退出多人游戏时的确认方式")));
+                    .dimensions(0, 0, 50, 20).build(), Text.translatable("config.quitconfirm.setting.confirmtype.inmultiplayer")));
         }
         {
             MutableText category = Text.literal("二次确认界面屏幕设定");
             listWidget.addEntry(listWidget.new CategoryEntry(category.setStyle(category.getStyle().withBold(true)), 11184810));
 
             listWidget.addEntry(listWidget.new ButtonListEntry(ButtonWidget
-                    .builder(Text.literal(Config.config.confirmScreenDisplayType.displayName), (button) -> {
+                    .builder((Config.config.confirmScreenDisplayType.displayName), (button) -> {
                         Config.config.confirmScreenDisplayType = Config.config.nextEnum(Config.ConfirmScreenDisplayTypeEnum.class, Config.config.confirmScreenDisplayType);
-                        button.setMessage(Text.literal(Config.config.confirmScreenDisplayType.displayName));
+                        button.setMessage((Config.config.confirmScreenDisplayType.displayName));
                     })
-                    .dimensions(0, 0, 40, 20).build(), Text.literal("确认屏幕样式")));
+                    .dimensions(0, 0, 50, 20).build(), Text.literal("确认屏幕样式")));
 
 
             listWidget.addEntry(listWidget.new ButtonListEntry(ButtonWidget
@@ -72,9 +72,9 @@ public class SettingScreen extends Screen {
                         Config.config.enableScreenShortcutKey = !Config.config.enableScreenShortcutKey;
                         button.setMessage(Config.config.enableScreenShortcutKey ? ScreenTexts.ON : ScreenTexts.OFF);
                     })
-                    .dimensions(0, 0, 40, 20).build(), Text.literal("允许在二次确认屏幕上使用快捷键")));
+                    .dimensions(0, 0, 50, 20).build(), Text.literal("允许在二次确认屏幕上使用快捷键")));
 
-            TextFieldWidget keepDark = new TextFieldWidget(client.textRenderer, 0, 0, 38, 20, Text.empty());
+            TextFieldWidget keepDark = new TextFieldWidget(client.textRenderer, 0, 0, 48, 20, Text.empty());
             keepDark.setText(String.valueOf(Config.config.keepDarkInConfirmScreenTime));
             keepDark.setChangedListener(new PositiveLongParser(keepDark, (it) -> Config.config.keepDarkInConfirmScreenTime = it));
             listWidget.addEntry(listWidget.new InputListEntry(keepDark, Text.literal("保持确认屏幕按钮不可用时长")));
@@ -83,17 +83,17 @@ public class SettingScreen extends Screen {
             MutableText category = Text.literal("二次确认土司设定");
             listWidget.addEntry(listWidget.new CategoryEntry(category.setStyle(category.getStyle().withBold(true)), 11184810));
 
-            TextFieldWidget toastDisplayTime = new TextFieldWidget(client.textRenderer, 0, 0, 38, 20, Text.empty());
+            TextFieldWidget toastDisplayTime = new TextFieldWidget(client.textRenderer, 0, 0, 48, 20, Text.empty());
             toastDisplayTime.setText(String.valueOf(Config.config.toastConfirmDisplayTime));
             toastDisplayTime.setChangedListener(new PositiveLongParser(toastDisplayTime, (it) -> Config.config.toastConfirmDisplayTime = it));
             listWidget.addEntry(listWidget.new InputListEntry(toastDisplayTime, Text.literal("土司持续时间")));
 
-            TextFieldWidget toastStartAliveTime = new TextFieldWidget(client.textRenderer, 0, 0, 38, 20, Text.empty());
+            TextFieldWidget toastStartAliveTime = new TextFieldWidget(client.textRenderer, 0, 0, 48, 20, Text.empty());
             toastStartAliveTime.setText(String.valueOf(Config.config.toastConfirmStartAliveTime));
             toastStartAliveTime.setChangedListener(new PositiveLongParser(toastStartAliveTime, (it) -> Config.config.toastConfirmStartAliveTime = it));
             listWidget.addEntry(listWidget.new InputListEntry(toastStartAliveTime, Text.literal("土司响应开始时间")));
 
-            TextFieldWidget toastEndAliveTime = new TextFieldWidget(client.textRenderer, 0, 0, 38, 20, Text.empty());
+            TextFieldWidget toastEndAliveTime = new TextFieldWidget(client.textRenderer, 0, 0, 48, 20, Text.empty());
             toastEndAliveTime.setText(String.valueOf(Config.config.toastConfirmEndAliveTime));
             toastEndAliveTime.setChangedListener(new PositiveLongParser(toastEndAliveTime, (it) -> Config.config.toastConfirmEndAliveTime = it));
             listWidget.addEntry(listWidget.new InputListEntry(toastEndAliveTime, Text.literal("土司响应结束时间")));
