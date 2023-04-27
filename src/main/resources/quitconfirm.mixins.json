@@ -7,8 +7,7 @@
   ],
   "client": [
     "MixinButtonWidget",
-    "MixinMinecraftClient",
-    "MixinResourceReloadLogger"
+    "MixinMinecraftClient"
   ],
   "injectors": {
     "defaultRequire": 1

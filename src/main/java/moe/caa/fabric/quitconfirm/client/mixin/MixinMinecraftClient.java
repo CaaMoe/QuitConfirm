@@ -1,7 +1,7 @@
 package moe.caa.fabric.quitconfirm.client.mixin;
 
-import moe.caa.fabric.quitconfirm.client.EventResult;
-import moe.caa.fabric.quitconfirm.client.EventsKt;
+import moe.caa.fabric.quitconfirm.client.event.ClientScheduleStopEvent;
+import moe.caa.fabric.quitconfirm.client.event.EventResult;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.util.Window;
 import org.lwjgl.glfw.GLFW;
@@ -18,7 +18,7 @@ public class MixinMinecraftClient {
 
     @Inject(method = "scheduleStop", at = @At("HEAD"), cancellable = true)
     private void onScheduleStop(CallbackInfo ci){
-        EventResult result = EventsKt.CLIENT_SCHEDULE_STOP.invoker().onScheduleStop();
+        EventResult result = ClientScheduleStopEvent.CLIENT_SCHEDULE_STOP.invoker().onScheduleStop();
         if(result == EventResult.CANCEL){
             GLFW.glfwSetWindowShouldClose(this.window.getHandle(), false);
             ci.cancel();
