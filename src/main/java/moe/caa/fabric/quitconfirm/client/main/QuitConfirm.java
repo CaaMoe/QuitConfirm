@@ -5,13 +5,14 @@ import moe.caa.fabric.quitconfirm.client.event.ButtonPressEvent;
 import moe.caa.fabric.quitconfirm.client.event.ClientScheduleStopEvent;
 import moe.caa.fabric.quitconfirm.client.event.EventResult;
 import moe.caa.fabric.quitconfirm.client.handle.ToastQuitHandler;
+import moe.caa.fabric.quitconfirm.client.screen.confirm.ConfirmScreen;
 import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.GameMenuScreen;
+import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableTextContent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 
 
 public class QuitConfirm implements ClientModInitializer {
@@ -28,7 +29,8 @@ public class QuitConfirm implements ClientModInitializer {
                 return toastInFinalQuitHandler.trigger();
             }
             if (Config.config.confirmTypeInFinalQuit == Config.ConfirmTypeEnum.SCREEN) {
-                return toastInFinalQuitHandler.trigger();
+                MinecraftClient.getInstance().setScreen(new ConfirmScreen(MinecraftClient.getInstance().currentScreen, Text.literal("退出这个游戏"), () -> MinecraftClient.getInstance().scheduleStop()));
+                return EventResult.CANCEL;
             }
             return EventResult.PASS;
         });
@@ -45,10 +47,24 @@ public class QuitConfirm implements ClientModInitializer {
                 key = ((TranslatableTextContent) button.getMessage().getContent()).getKey();
             }
             if ("menu.returnToMenu".equals(key)) {
-                return toastInSinglePlayerQuitHandle.trigger();
+                if (Config.config.confirmTypeInSinglePlayer == Config.ConfirmTypeEnum.TOAST) {
+                    return toastInSinglePlayerQuitHandle.trigger();
+                }
+                if (Config.config.confirmTypeInSinglePlayer == Config.ConfirmTypeEnum.SCREEN) {
+                    MinecraftClient.getInstance().setScreen(new ConfirmScreen(MinecraftClient.getInstance().currentScreen, Text.literal("退出单人游戏"), button::onPress));
+                    return EventResult.CANCEL;
+                }
+                return EventResult.PASS;
             }
             if ("menu.disconnect".equals(key)) {
-                return toastInMultiplayerQuitHandle.trigger();
+                if (Config.config.confirmTypeInMultiplayer == Config.ConfirmTypeEnum.TOAST) {
+                    return toastInMultiplayerQuitHandle.trigger();
+                }
+                if (Config.config.confirmTypeInMultiplayer == Config.ConfirmTypeEnum.SCREEN) {
+                    MinecraftClient.getInstance().setScreen(new ConfirmScreen(MinecraftClient.getInstance().currentScreen, Text.literal("退出多人游戏"), button::onPress));
+                    return EventResult.CANCEL;
+                }
+                return EventResult.PASS;
             }
             return EventResult.PASS;
         });
