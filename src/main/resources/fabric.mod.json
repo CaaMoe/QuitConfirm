@@ -30,8 +30,5 @@
     "fabric-api": "*",
     "minecraft": "~1.19",
     "java": ">=17"
-  },
-  "dependencies": {
-    "yet_another_config_lib": "^2.5.0+1.19.4"
   }
 }

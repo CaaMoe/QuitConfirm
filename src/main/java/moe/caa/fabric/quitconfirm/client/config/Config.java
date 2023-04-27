@@ -1,36 +1,47 @@
 package moe.caa.fabric.quitconfirm.client.config;
 
-import dev.isxander.yacl.config.ConfigEntry;
-import dev.isxander.yacl.config.GsonConfigInstance;
+import com.google.gson.Gson;
+import moe.caa.fabric.quitconfirm.client.main.QuitConfirm;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.StandardOpenOption;
 
 public class Config {
-    public static final GsonConfigInstance<Config> gsonConfigInstance = GsonConfigInstance.<Config>createBuilder(
-            Config.class
-    ).build();
+    public static Config config = new Config();
+    private static final Gson gson = new Gson();
+    private static final Path path = Path.of("config/quitconfirm.json");
 
-    @ConfigEntry
     public ConfirmType confirmTypeInFinalQuit = ConfirmType.SCREEN;
-    @ConfigEntry
     public ConfirmType confirmTypeInSinglePlayer = ConfirmType.TOAST;
-    @ConfigEntry
     public ConfirmType confirmTypeInMultiplayer = ConfirmType.TOAST;
-    @ConfigEntry
     public boolean enableScreenShortcutKey = true;
-    @ConfigEntry
     public long keepDarkInConfirmScreenTime = 1000L;
-    @ConfigEntry
     public ConfirmScreenDisplayTypeEnum confirmScreenDisplayType = ConfirmScreenDisplayTypeEnum.BEDROCK;
-    @ConfigEntry
     public long toastConfirmDisplayTime = 5000L;
-    @ConfigEntry
     public long toastConfirmStartAliveTime = 500L;
-    @ConfigEntry
     public long toastConfirmEndAliveTime = 5000L;
-    @ConfigEntry
-    public boolean enableStartTimeConsumeToast = true;
-    @ConfigEntry
-    public long startTimToastKeepTime = 5000L;
 
+    public static void load(){
+        try {
+            if (Files.notExists(path)){
+                save();
+                return;
+            }
+            config = gson.fromJson(Files.readString(path), Config.class);
+        } catch (Exception e){
+            QuitConfirm.LOGGER.error("Failed to read " + path, e);
+        }
+    }
+
+    public static void save(){
+        try {
+            Files.writeString(path, gson.toJson(config), StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING);
+        } catch (IOException e) {
+            QuitConfirm.LOGGER.error("Failed to save " + path, e);
+        }
+    }
 
     public enum ConfirmScreenDisplayTypeEnum {
         CLASSIC("经典"),

@@ -13,11 +13,6 @@ group = project.maven_group
 repositories {
     repositories {
         maven {
-            url 'https://maven.isxander.dev/releases'
-        }
-    }
-    repositories {
-        maven {
             url 'https://maven.terraformersmc.com/releases'
         }
     }
@@ -27,9 +22,9 @@ dependencies {
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation 'dev.isxander.yacl:yet-another-config-lib-fabric:2.5.0+1.19.4'
+
+    modImplementation "com.terraformersmc:modmenu:6.2.1"
 }
 
 processResources {
@@ -43,8 +38,4 @@ processResources {
 
 tasks.withType(JavaCompile).configureEach {
     it.options.encoding = "UTF-8"
-}
-
-java {
-    withSourcesJar()
 }

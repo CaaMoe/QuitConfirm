@@ -9,20 +9,25 @@ import net.fabricmc.api.ClientModInitializer;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.GameMenuScreen;
 import net.minecraft.text.TranslatableTextContent;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 
 public class QuitConfirm implements ClientModInitializer {
+    public static final Logger LOGGER = LoggerFactory.getLogger("QuitConfirm");
     private final ToastQuitHandler toastInFinalQuitHandler = new ToastQuitHandler("退出这个游戏，请再次操作");
     private final ToastQuitHandler toastInSinglePlayerQuitHandle = new ToastQuitHandler("退出单人游戏，请再次操作");
     private final ToastQuitHandler toastInMultiplayerQuitHandle = new ToastQuitHandler("退出多人游戏，请再次操作");
 
     @Override
     public void onInitializeClient() {
+        Config.load();
         ClientScheduleStopEvent.CLIENT_SCHEDULE_STOP.register(() -> {
-            if (Config.gsonConfigInstance.getConfig().confirmTypeInFinalQuit == Config.ConfirmType.TOAST) {
+            if (Config.config.confirmTypeInFinalQuit == Config.ConfirmType.TOAST) {
                 return toastInFinalQuitHandler.trigger();
             }
-            if (Config.gsonConfigInstance.getConfig().confirmTypeInFinalQuit == Config.ConfirmType.SCREEN) {
+            if (Config.config.confirmTypeInFinalQuit == Config.ConfirmType.SCREEN) {
                 return toastInFinalQuitHandler.trigger();
             }
             return EventResult.PASS;
@@ -47,6 +52,5 @@ public class QuitConfirm implements ClientModInitializer {
             }
             return EventResult.PASS;
         });
-
     }
 }

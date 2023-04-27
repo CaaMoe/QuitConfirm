@@ -17,7 +17,7 @@ public class ToastQuitHandler {
     public EventResult trigger() {
         long millis = System.currentTimeMillis();
         if (state == State.ACTIVE) {
-            if (startTime + Config.gsonConfigInstance.getConfig().toastConfirmDisplayTime < millis) {
+            if (startTime + Config.config.toastConfirmDisplayTime < millis) {
                 state = State.INACTIVE;
             }
         }
@@ -26,12 +26,12 @@ public class ToastQuitHandler {
             startTime = millis;
             state = State.ACTIVE;
             MinecraftClient.getInstance().getToastManager().add(
-                    new QuitToast(message, Config.gsonConfigInstance.getConfig().toastConfirmDisplayTime)
+                    new QuitToast(message, Config.config.toastConfirmDisplayTime)
             );
             return EventResult.CANCEL;
         }
-        if (Config.gsonConfigInstance.getConfig().toastConfirmStartAliveTime + startTime < millis) {
-            if (Config.gsonConfigInstance.getConfig().toastConfirmEndAliveTime + startTime > millis) {
+        if (Config.config.toastConfirmStartAliveTime + startTime < millis) {
+            if (Config.config.toastConfirmEndAliveTime + startTime > millis) {
                 return EventResult.PASS;
             }
         }
