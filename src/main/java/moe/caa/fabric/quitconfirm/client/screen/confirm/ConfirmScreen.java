@@ -16,6 +16,12 @@ public class ConfirmScreen extends Screen {
     private ButtonWidget cancel;
     private ButtonWidget confirm;
 
+    private boolean confirmed = false;
+
+    public boolean isConfirmed() {
+        return confirmed;
+    }
+
     public ConfirmScreen(Screen parentScreen, Text message, Runnable confirm) {
         this(parentScreen, message, button -> confirm.run());
     }
@@ -42,7 +48,11 @@ public class ConfirmScreen extends Screen {
     }
 
     private void initButton() {
-        confirm = style.generateConfirmButtons(this, onConfirm);
+        confirm = style.generateConfirmButtons(this, button -> {
+            confirmed = true;
+            confirm.onPress();
+        });
+
         cancel = style.generateCancelButtons(this, onCancel);
 
         confirm.active = false;

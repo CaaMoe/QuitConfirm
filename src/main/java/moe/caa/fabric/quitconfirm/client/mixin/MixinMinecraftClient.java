@@ -26,7 +26,13 @@ public class MixinMinecraftClient {
 
     @Inject(method = "scheduleStop", at = @At("HEAD"), cancellable = true)
     private void onScheduleStop(CallbackInfo ci) {
-        if (currentScreen instanceof ConfirmScreen) return;
+        if (currentScreen instanceof ConfirmScreen) {
+            if (((ConfirmScreen) currentScreen).isConfirmed()) {
+                return;
+            }
+            ci.cancel();
+            return;
+        }
         EventResult result = ClientScheduleStopEvent.CLIENT_SCHEDULE_STOP.invoker().onScheduleStop();
         if (result == EventResult.CANCEL) {
             GLFW.glfwSetWindowShouldClose(this.window.getHandle(), false);
